@@ -184,11 +184,14 @@ body {
   transition: background-color 0.7s ease, color 0.7s ease;
 }
 .glass-effect {
-  background: var(--glass-bg-base);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border-base);
-  box-shadow: 0 8px 32px 0 var(--glass-shadow-base);
+  background: linear-gradient(
+    120deg,
+    rgba(36, 36, 36, 0.761),
+    rgba(33, 33, 33, 0.617)
+  );
+  border-bottom: 1px solid rgba(43, 43, 43, 0.773);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.543);
+  backdrop-filter:; /* Без blur */
 }
 @keyframes float-blob {
   0%,

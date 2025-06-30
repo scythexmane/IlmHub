@@ -1,0 +1,335 @@
+{
+  "Bosh sahifa": "Home",
+  "Kurslar": "Courses",
+  "Biz haqimizda": "About",
+  "Aloqa": "Contact",
+  "Blog": "Blog",
+  "Kurslarga yozilish": "Enroll Now",
+  "Zamonaviy": "Modern",
+  "Interaktiv": "Interactive",
+  "Ta'lim markazi": "Education Center",
+  "Eng so‘nggi texnologiyalar asosida darslar, tajribali o‘qituvchilar va kuchli natijalar. Siz ham o‘z sohangizning mutaxassisi bo‘ling!": "Courses based on the latest technologies, experienced teachers and strong results. Become a specialist in your field!",
+  "Kurslarni ko‘rish": "View Courses",
+  "Kurslarimiz bilan tanishing": "Explore our courses",
+  "Ko‘proq kurslar": "More courses",
+  "comments": {
+    "title": "What our students say"
+  },
+  "courses.title": "Our Courses",
+  "courses.subtitle": "Choose your path to success with IlmHub",
+  "courses.price_label": "Price",
+  "courses.duration_label": "Duration",
+  "courses.months": "months",
+  "courses.no_courses_found": "No courses found in this category.",
+
+  "courses.foundation_programming.title": "Foundation Programming",
+  "courses.foundation_programming.desc": "This course is considered the first step towards programming, providing a strong foundation for future developers.",
+  "courses.dotnet_bootcamp.title": ".NET Bootcamp",
+  "courses.dotnet_bootcamp.desc": ".NET framework is used in many areas of programming, such as mobile, web, and desktop applications. An intensive bootcamp for deep immersion.",
+  "courses.dotnet_backend.title": ".NET Backend",
+  "courses.dotnet_backend.desc": "This course is suitable for those who have basic knowledge in programming and wish to specialize in backend development.",
+  "courses.ai_bootcamp.title": "AI Bootcamp",
+  "courses.ai_bootcamp.desc": "This course introduces Machine Learning concepts, algorithms, and principles of building intelligent systems.",
+  "courses.flutter_mobile.title": "Flutter Cross-platform (Flutter Mobile)",
+  "courses.flutter_mobile.desc": "Flutter is an SDK developed by Google that can create programs for both iOS and Android from a single codebase.",
+  "courses.python_beginner_kids.title": "Python Beginner (Kids)",
+  "courses.python_beginner_kids.desc": "The Python Beginner course is the first step towards programming, designed specifically for children to make learning fun.",
+  "courses.arduino_robotics_kids.title": "Arduino & Robotics (Kids)",
+  "courses.arduino_robotics_kids.desc": "The Robotics module is mainly for school-age children interested in electronics, programming, and building their own robots.",
+  "courses.scratch_kids.title": "Scratch (Kids)",
+  "courses.scratch_kids.desc": "Our course is designed for school-age children who want to take their first steps in programming in an easy and playful way.",
+
+  "courses.view_all": "View All Courses",
+  "courses.learn_more": "Learn More",
+  "courses.learn_more_about": "Learn more about {{course}} course",
+
+  "categories.all": "All",
+  "categories.foundation": "Foundation",
+  "categories.bootcamp": "Bootcamp",
+  "categories.backend": "Backend",
+  "categories.ai": "AI",
+  "categories.mobile": "Mobile",
+  "categories.kids": "Kids",
+
+  "Наши достижения": "Our Achievements",
+  "Цифры, которые говорят сами за себя": "Numbers that speak for themselves",
+  "Главные показатели": "Key Indicators",
+  "Популярность направлений": "Popular Courses",
+  "Какое направление выбирают наши студенты чаще всего.": "Which direction our students choose most often.",
+  "Рост и успешность за последние годы": "Growth and Success Rate over the Years",
+  "Как мы росли и улучшали наши результаты год за годом.": "How we grew and improved our results year after year.",
+  "Студентов": "Students",
+  "Успешность": "Success Rate",
+  "студентов": "students",
+  "stats.students": "Students",
+  "stats.courses": "Courses",
+  "stats.teachers": "Teachers",
+  "stats.certificates": "Certificates",
+  "courses": {
+    "price_label": "Price",
+    "duration_label": "Duration",
+    "month_one": "month",
+    "month_few": "months",
+    "month_many": "months",
+    "learn_more": "Learn More",
+    "view_details": "View Details",
+
+    "foundation_programming": {
+      "title": "Foundation (Programming)",
+      "desc": "Our Foundation course is designed for those taking their first steps into the world of programming.",
+      "full_description": "This course is the ideal starting point for anyone dreaming of becoming a programmer but unsure where to begin. We cover the fundamentals of programming logic, algorithms, and data structures using simple and clear examples. You will learn to write clean and efficient code, which will lay a strong foundation for further study of any programming language. Upon completion of the course, you will be ready for more advanced topics such as web development or data analysis."
+    },
+    "dotnet_bootcamp": {
+      "title": ".NET Bootcamp",
+      "desc": "An intensive .NET bootcamp that will prepare you for a career as a developer.",
+      "full_description": "An intensive .NET bootcamp that will prepare you for a career as a developer. A deep dive into C#, ASP.NET Core, and databases. The course includes practical projects, teamwork, and interview preparation. You will learn to create full-fledged web applications, work with frameworks and design patterns, and deploy applications to the cloud. Ideally suited for those who want to quickly master a sought-after profession."
+    },
+    "dotnet_backend": {
+      "title": ".NET Backend",
+      "desc": "Build powerful and scalable server applications using .NET.",
+      "full_description": "Build powerful and scalable server applications using .NET. The course covers API development, microservices, working with databases (SQL, NoSQL), and cloud technologies (Azure/AWS). You will learn how to build fault-tolerant systems, ensure data security, and optimize performance. This course is essential for backend developers looking to deepen their knowledge in the Microsoft ecosystem."
+    },
+    "ai_bootcamp": {
+      "title": "AI Bootcamp",
+      "desc": "Dive into the world of artificial intelligence and machine learning.",
+      "full_description": "Dive into the world of artificial intelligence and machine learning. A practical course on building and deploying AI models. You will learn the basics of Python for data analysis, machine learning algorithms (classification, regression, clustering), as well as an introduction to neural networks. The course focuses on the practical application of acquired knowledge to solve real-world problems."
+    },
+    "flutter_mobile": {
+      "title": "Flutter (Mobile Development)",
+      "desc": "Learn to create beautiful and performant mobile applications for iOS and Android using Flutter.",
+      "full_description": "Learn to create beautiful and performant mobile applications for iOS and Android using Google's Flutter framework. The course covers the basics of the Dart language, Flutter widgets, state management, working with APIs, and publishing applications. You will create several fully functional applications that will run on both platforms with a single codebase."
+    },
+    "python_beginner_kids": {
+      "title": "Python for Kids (Beginner)",
+      "desc": "A fun and interactive course on the basics of Python programming, specially designed for children.",
+      "full_description": "A fun and interactive course on the basics of Python programming, specially designed for children. Develop logic and creativity through solving puzzles, creating simple games, and animations. Children will learn basic coding concepts in a playful way, which stimulates their interest in IT and develops critical thinking skills."
+    },
+    "arduino_robotics_kids": {
+      "title": "Arduino and Robotics (Kids)",
+      "desc": "An introduction to the world of electronics and robotics using the Arduino platform.",
+      "full_description": "An introduction to the world of electronics and robotics using the Arduino platform. Children will learn to assemble and program simple robots, control sensors, and actuators. The course develops engineering thinking, problem-solving skills, and fine motor skills, as well as introducing the basics of physics and electronics."
+    },
+    "scratch_kids_original": {
+      "title": "Scratch (Kids - Original)",
+      "desc": "Visual programming for the youngest, developing logical thinking.",
+      "full_description": "Visual programming for the youngest, developing logical thinking through creating games and animations in the Scratch environment. Children master the basics of algorithms, loops, conditions, and variables without having to write code, simply by dragging and dropping blocks. This is an excellent start for developing creativity and analytical abilities."
+    },
+    "scratch_kids": {
+      "title": "Scratch (Kids)",
+      "desc": "Our course is designed for schoolchildren who want to take their first steps in programming using Scratch.",
+      "full_description": "Our course is designed for schoolchildren who want to take their first steps in programming using the visual language Scratch. They will learn to create their own interactive stories, games, and animations, developing logical thinking and creative abilities. The course takes place in a playful way, which makes learning engaging and accessible for young programmers."
+    },
+    "react_native_mobile": {
+      "title": "React Native (Mobile Development)",
+      "desc": "Learn React Native to build cross-platform mobile applications.",
+      "full_description": "Learn React Native to build cross-platform mobile applications. Build real-world apps that run on both iOS and Android with a single codebase. The course covers the basics of React, Redux, navigation, working with local storage, and APIs. You'll master all the tools needed to create modern mobile applications."
+    },
+    "ios_mobile_swift": {
+      "title": "iOS Mobile (Swift)",
+      "desc": "Create native applications for iPhone and iPad using Swift.",
+      "full_description": "Create native applications for iPhone and iPad using Swift, Apple's powerful and intuitive programming language. The course delves into the basics of Swift, UIKit/SwiftUI, application lifecycle, data handling, and device hardware interaction. You will develop several full-fledged iOS applications ready for publication on the App Store."
+    },
+    "python_backend": {
+      "title": "Python Backend",
+      "desc": "Our Python Backend course is an excellent choice for those who want to master backend web application development.",
+      "full_description": "Our Python Backend course is an excellent choice for those who want to master backend web application development using Python, Django, and Flask. You will learn RESTful APIs, databases (PostgreSQL), authentication, authorization, and application deployment. The course includes many practical assignments and real-world projects that will help you become a qualified backend developer."
+    },
+    "phonics_level1": {
+      "title": "Phonics Level 1",
+      "desc": "Phonics Level 1 is an introductory course designed for children to lay a strong foundation in reading and pronouncing English words.",
+      "full_description": "Phonics Level 1 is an introductory course designed specifically for preschool and early elementary children to lay a strong foundation in reading and pronouncing English words. We use interactive games, songs, and engaging activities to make the learning process fun and effective. Children will learn to recognize basic English sounds, match them with letters, and read simple words, which is a crucial step towards fluent reading."
+    },
+    "phonics_level2": {
+      "title": "Phonics Level 2",
+      "desc": "Phonics Level 2 continues to build upon the skills learned in Phonics Level 1.",
+      "full_description": "Phonics Level 2 continues to build upon the skills learned in Phonics Level 1, deepening understanding of sounds and letter combinations. At this stage, children learn to read more complex words and master digraphs and diphthongs. The course includes more group games and exercises on reading short sentences, which helps build confidence in their reading skills."
+    },
+    "phonics_level3": {
+      "title": "Phonics Level 3",
+      "desc": "Phonics Level 3 deepens students' knowledge of phonics.",
+      "full_description": "Phonics Level 3 deepens students' knowledge of phonics and helps them tackle more complex reading and pronunciation rules. This course covers long vowels, syllable division rules, and reading multi-syllabic words. Students begin reading short stories and poems, which improves their comprehension and reading fluency."
+    },
+    "phonics_level4": {
+      "title": "Phonics Level 4",
+      "desc": "Phonics Level 4 is the final stage in the Phonics program.",
+      "full_description": "Phonics Level 4 is the final stage in the Phonics program, solidifying all acquired knowledge and skills for fluent reading. Children learn exceptions to rules, master reading complex texts, and work on intonation. The course aims to develop independent reading and prepare for more complex educational materials in the future."
+    }
+  },
+  "categories": {
+    "all": "All",
+    "foundation": "Foundation",
+    "bootcamp": "Bootcamp",
+    "backend": "Backend",
+    "ai": "AI",
+    "mobile": "Mobile",
+    "kids": "Kids",
+    "kiddish": "For Toddlers"
+  },
+  "coursesPage": {
+    "title": "Our Courses",
+    "subtitle": "Discover a wide range of courses designed for all ages and skill levels. Start your journey in IT today!",
+    "filters": {
+      "title": "Filters",
+      "search": "Search Courses",
+      "search_placeholder": "Enter name or description...",
+      "category": "Category",
+      "price_range": "Price Range",
+      "duration_range": "Duration Range (months)",
+      "sort_by": "Sort By",
+      "sort_default": "Default",
+      "sort_price_asc": "Price (Ascending)",
+      "sort_price_desc": "Price (Descending)",
+      "sort_duration_asc": "Duration (Ascending)",
+      "sort_duration_desc": "Duration (Descending)",
+      "reset_filters": "Reset Filters"
+    },
+    "no_results": {
+      "oops": "Oops!",
+      "message": "It looks like no courses match your search. Try adjusting the filter criteria.",
+      "reset_filters_btn": "Reset Filters"
+    }
+  },
+  "modal": {
+    "close_button_aria": "Close modal",
+    "rating_label": "Rating",
+    "students_label": "Students",
+    "level_label": "Level",
+    "age_label": "Age",
+    "full_description_heading": "Full Course Description",
+    "contact_us": "Contact Us" 
+  },
+  "levels": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "preschool": "Preschool"
+  },
+  "stats": {
+    "title": "Our Achievements",
+    "subtitle": "Real numbers that reflect the success of our platform.",
+    "students": "Students",
+    "courses": "Courses",
+    "teachers": "Teachers",
+    "certificates": "Certificates"
+  },
+  "clientFeedback": "Client Feedback",
+  "whatTheySay": "What They Say After Using Our Product",
+  "viewAll": "View All",
+  "testimonial1.name": "Muhammadrizo Maribjonov",
+  "testimonial1.quote": "Needed demanding teachers because I wouldn't study unless someone encouraged me to acquire all the time. Coming to Ilmhub, I found the teachers I was looking for.",
+  "testimonial2.name": "Nafisa O'taboyeva",
+  "testimonial2.quote": "My favorite teacher of algorithms who never gets tired of sharing his knowledge given by Allah with young people with a smile on his face 🙂. Good luck with everything you want to do in future.",
+  "testimonial3.name": "Isroil Kasimov",
+  "testimonial3.quote": "Attended the course out of interest; the interior and lesson delivery are top-notch.",
+  "testimonial4.name": "Akbarkhon Akramkhuzhaev",
+  "testimonial4.quote": "Great place",
+  "testimonial5.name": "Lola",
+  "testimonial5.quote": "Good training",
+  "testimonial6.name": "Sarvar M.",
+  "testimonial6.quote": "Turns out, very interesting modern courses",
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about our product and services.",
+    "faq1": {
+      "q": "How does the subscription model work?",
+      "a": "Our subscription model is designed for flexibility. You can choose a monthly or annual plan and cancel at any time without any hidden fees. Annual plans come with a significant discount."
+    },
+    "faq2": {
+      "q": "Can I integrate your product with other tools?",
+      "a": "Absolutely. We offer a robust API and native integrations with popular platforms like Slack, Google Drive, and Trello. Our goal is to seamlessly fit into your existing workflow."
+    },
+    "faq3": {
+      "q": "What kind of support do you offer?",
+      "a": "We provide 24/7 premium support through live chat and email. Our dedicated support team is always ready to help you with any questions or issues you might encounter."
+    },
+    "faq4": {
+      "q": "Is my data secure?",
+      "a": "Data security is our top priority. We use end-to-end encryption, regular security audits, and comply with all major data protection regulations, including GDPR and CCPA, to ensure your data is always safe."
+    }
+  },
+  "hero": {
+    "description": "Discover a transformative learning experience at Ilm Hub Learning Center, where innovation meets education to unlock your full potential."
+  },
+  "advantages": {
+    "title": "Why Choose Ilm Hub?",
+    "items": [
+      {
+        "title": "Cutting-Edge Curriculum",
+        "description": "Our programs are designed with the latest industry trends to ensure you stay ahead in a fast-paced world."
+      },
+      {
+        "title": "Community-Driven Learning",
+        "description": "Join a vibrant community of learners and educators, fostering collaboration and growth."
+      },
+      {
+        "title": "Trusted Quality",
+        "description": "Our courses are crafted by experts to deliver reliable and impactful education."
+      },
+      {
+        "title": "Personalized Learning Paths",
+        "description": "Tailored programs to suit your unique goals and learning style."
+      },
+      {
+        "icon": "Lightbulb",
+        "title": "Innovative Teaching Methods",
+        "description": "Engage with interactive and modern teaching techniques to enhance your learning experience."
+      },
+      {
+        "icon": "Award",
+        "title": "Recognized Excellence",
+        "description": "Our certifications and achievements are recognized globally, boosting your career prospects."
+      }
+    ]
+  },
+  "teachers": {
+    "title": "Meet Our Expert Teachers",
+    "teachers": [
+      {
+        "name": "Wahid",
+        "title": "Senior Programming Instructor"
+      },
+      {
+        "name": "Kilichbek",
+        "title": "Data Science Specialist"
+      },
+      {
+        "name": "Davron",
+        "title": "Web Development Mentor"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Start Your Journey Today!",
+    "description": "Join Ilm Hub Learning Center and take the first step towards a brighter future with our innovative courses and expert guidance.",
+    "buttons": {
+      "enroll": "Enroll Now",
+      "learnMore": "Learn More"
+    }
+  },
+  "contact": {
+    "title": "Let's connect, let's create!",
+    "description": "Have a project idea, question, or just want to say hi? Drop us a message below. We’re always excited to hear from you and explore new possibilities.",
+    "form": {
+      "name": "Your full name",
+      "email": "Your email address",
+      "subject": "Subject of your message",
+      "message": "Write your message here...",
+      "send": "Send message"
+    }
+  },
+  "footer": {
+    "missionStatement": "Ilm Hub is an innovative educational platform designed to make learning accessible and engaging for everyone.",
+    "learnMore": "Learn More",
+    "links": "Links",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "reachUs": "Reach Us",
+    "address": "Mustaqillik St, 15, Tashkent, Uzbekistan",
+    "newsletterTitle": "Subscribe to Our Newsletter",
+    "newsletterDesc": "Get the latest news, updates, and exclusive offers delivered directly to your inbox.",
+    "newsletterPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "newsletterDisclaimer": "We'll never share your data with anyone else.",
+    "rights": "All rights reserved."
+  }
+}

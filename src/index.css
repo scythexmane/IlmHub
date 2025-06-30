@@ -1,0 +1,386 @@
+@import "tailwindcss";
+
+/* Объединенные CSS переменные для светлой темы */
+:root {
+  /* Core Colors */
+  --color-bg: #ffffff;
+  --color-text: #1f2937;
+  --color-primary: #2563eb;
+  --color-secondary: #10b981;
+  --color-accent: #06a6c3;
+  --color-muted: #1c1c1c;
+
+  /* Original Accent Colors (from first request, kept for specific use if needed) */
+  --accent-indigo-soft: #6366f1;
+  --accent-teal-aqua: #14b8a6;
+
+  /* Extended Palettes */
+  --color-bg-alt: #f3f4f6;
+  --color-border: #e5e7eb;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-hover-bg: #e0e7ff;
+  --color-btn-text: #ffffff;
+
+  /* Glassmorphism specific colors (adjusted for better visibility in light theme) */
+  --glass-bg-base: rgba(255, 255, 255, 0.6);
+  --glass-border-base: rgba(0, 0, 0, 0.08);
+  --glass-shadow-base: rgba(0, 0, 0, 0.1);
+
+  /* Additional colors from your first request */
+  --extra-color-1: #e879f9;
+  --extra-color-2: #22d3ee;
+  --neutral-text-light: #94a3b8;
+  --light-soft-white: #fef9ff;
+
+  /* Borders from first request, more specific */
+  --light-border-main: rgba(0, 0, 0, 0.05);
+
+  /* Chart colors */
+  --chart-primary: #3b82f6;
+  --chart-secondary: #34d399;
+  --chart-tertiary: #fbbf24;
+  --chart-quaternary: #f87171;
+  --chart-text: #374151;
+  --chart-grid: #e5e7eb;
+}
+
+/* CSS Variables for Dark Theme */
+html.dark {
+  /* Core Colors */
+  --color-bg: #0c0f1a; /* Немного светлее, чем #000218, для лучшей базы зернистости */
+  --color-text: #f3f4f6;
+  --color-primary: #3b82f6;
+  --color-secondary: #34d399;
+  --color-accent: #1b81a6;
+  --color-muted: #9ca3af;
+
+  /* Original Accent Colors (from first request, kept for specific use if needed) */
+  --accent-indigo-soft: #6366f1;
+  --accent-teal-aqua: #14b8a6;
+
+  /* Extended Palettes */
+  --color-bg-alt: #1f2937;
+  --color-border: #374151;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-hover-bg: #1f2937;
+  --color-btn-text: #ffffff;
+
+  /* Glassmorphism specific colors */
+  --glass-bg-base: rgba(0, 0, 0, 0.2);
+  --glass-border-base: rgba(255, 255, 255, 0.08);
+  --glass-shadow-base: rgba(0, 0, 0, 0.4);
+
+  /* Additional colors (primarily for dark theme if they differ or are unique) */
+  --extra-color-1: #e879f9;
+  --extra-color-2: #22d3ee;
+  --dark-card-bg: #18181b;
+
+  /* Borders from first request, more specific */
+  --dark-border-main: rgba(255, 255, 255, 0.08);
+
+  /* Chart colors */
+  --chart-primary: #3b82f6;
+  --chart-secondary: #34d399;
+  --chart-tertiary: #fbbf24;
+  --chart-quaternary: #f87171;
+  --chart-text: #f3f4f6;
+  --chart-grid: #374151;
+}
+
+/* Добавление эффекта зернистости */
+.body-with-grain {
+  position: relative;
+  /* Убедитесь, что основной фон установлен здесь или через data-theme */
+  background-color: var(--color-bg); /* Это будет ваш базовый фон */
+}
+
+.body-with-grain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Чтобы не мешать взаимодействию */
+  opacity: 0.04; /* Начальная прозрачность, можно регулировать */
+  z-index: -1; /* Помещаем за контент */
+  /* Используем SVG-паттерн для зернистости */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-size: cover; /* Растягиваем паттерн на весь фон */
+  transition: opacity 0.7s ease; /* Плавный переход для эффекта зернистости */
+}
+/* Card Shadows */
+.shadow-card-light {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05); /* Softer initial shadow for light cards */
+}
+.shadow-card-light-hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(0, 0, 0, 0.1); /* Stronger hover shadow for light cards */
+}
+/* No need for specific dark card initial shadow, as it's handled by `shadow-xl-strong` in this setup */
+.shadow-card-dark-hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6),
+    /* Deeper shadow for dark mode hover */ 0 0 0 3px rgba(255, 255, 255, 0.1),
+    /* Inner white border glow */ 0 0 15px rgba(255, 255, 255, 0.05); /* Outer subtle glow */
+}
+
+/* Icon Glow */
+.shadow-icon-glow {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3),
+    0 0 5px rgba(255, 255, 255, 0.5) inset;
+}
+
+/* Ensure your blob animation remains, and update blur value */
+/* .animate-blob, .animation-delay-XXXX */
+
+/* Update drop shadow for icons to be consistent/stronger */
+.drop-shadow-lg {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+} /* For section title */
+.drop-shadow-sm {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+} /* For card titles */
+
+/* Изменение прозрачности зернистости в зависимости от темы */
+html.dark .body-with-grain::before {
+  opacity: 0.08; /* Немного более заметная зернистость в темной теме */
+  /* Можно изменить цвет шума, если нужно */
+  filter: grayscale(100%) brightness(0.5); /* Для черно-белой зернистости */
+}
+
+html.light .body-with-grain::before {
+  opacity: 0.04; /* Менее заметная зернистость в светлой теме */
+  filter: grayscale(100%) brightness(1.5); /* Более светлая зернистость для светлой темы */
+}
+/* Apply theme based on data-theme attribute on <html> or <body> */
+html[data-theme="light"],
+body[data-theme="light"] {
+  background-color: var(--bg-light);
+  color: var(--text-main-light);
+}
+
+html[data-theme="dark"],
+body[data-theme="dark"] {
+  background-color: var(--bg-dark);
+  color: var(--text-main-dark);
+}
+
+/* Optional: Fallback for prefers-color-scheme, can be overridden by user setting */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    background-color: var(--bg-dark);
+    color: var(--text-main-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) {
+    background-color: var(--bg-light);
+    color: var(--text-main-light);
+  }
+}
+
+/* Global transitions for smooth theme changes */
+body {
+  transition: background-color 0.7s ease, color 0.7s ease;
+}
+.glass-effect {
+  background: var(--glass-bg-base);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border-base);
+  box-shadow: 0 8px 32px 0 var(--glass-shadow-base);
+}
+@keyframes float-blob {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-15px) translateX(10px) scale(1.05);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(10px) translateX(-10px) scale(0.95);
+    opacity: 0.28;
+  }
+  75% {
+    transform: translateY(-5px) translateX(15px) scale(1.02);
+    opacity: 0.32;
+  }
+}
+.animate-float-blob {
+  animation: float-blob 12s ease-in-out infinite alternate; /* Longer duration, ease-in-out for smoothness, alternate to float back and forth */
+}
+.animation-delay-3000 {
+  /* Увеличил задержки для большего разнообразия */
+  animation-delay: 3s;
+}
+.animation-delay-6000 {
+  animation-delay: 6s;
+}
+.animation-delay-9000 {
+  animation-delay: 9s;
+}
+.glass-effect-sm {
+  /* For lighter/less prominent glassmorphism */
+  background: var(
+    --glass-bg-base
+  ); /* Может быть, здесь немного изменить прозрачность, если нужно */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border-base); /* Может быть, немного тоньше */
+  box-shadow: 0 4px 16px 0 var(--glass-shadow-base); /* Чуть менее выраженная тень */
+}
+
+/* Specific button style using variables */
+.btn-primary {
+  background-color: var(
+    --color-primary
+  ); /* Теперь кнопка будет использовать основной цвет */
+  color: var(--color-btn-text);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1); /* Легкое затемнение при наведении */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* For smooth scroll animations, AOS */
+[data-aos="fade-up"] {
+  transform: translateY(20px);
+  opacity: 0;
+  transition-property: transform, opacity;
+}
+[data-aos="fade-up"].aos-animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+@keyframes float-blob {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.1; /* Ещё менее заметные на фоне секции */
+  }
+  25% {
+    transform: translateY(-25px) translateX(15px) scale(1.05);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translateY(20px) translateX(-15px) scale(0.95);
+    opacity: 0.08;
+  }
+  75% {
+    transform: translateY(-10px) translateX(20px) scale(1.03);
+    opacity: 0.11;
+  }
+}
+.animate-float-blob {
+  animation: float-blob 20s ease-in-out infinite alternate; /* Большая длительность для максимальной плавности */
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-5000 {
+  animation-delay: 5s;
+}
+.animation-delay-8000 {
+  animation-delay: 8s;
+}
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite cubic-bezier(0.6, 0.01, 0.4, 1);
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Ensure 3D perspective is applied correctly for nested elements */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.transform-gpu {
+  transform: translateZ(0); /* Forces GPU acceleration */
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+.animate-shimmer-lr {
+  animation: shimmer 2.2s ease-in-out infinite;
+}
+/* --- Анимации фона для Hero Section --- */
+.bg-animated-dark {
+  background: linear-gradient(
+    135deg,
+    #050810 0%,
+    /* Глубокий темный синий, почти черный */ #1a203e 25%,
+    /* Темный индиго */ #3b0764 50%,
+    /* Глубокий фиолетовый */ #1a203e 75%,
+    #050810 100%
+  );
+  background-size: 400% 400%; /* Увеличиваем размер фона для анимации */
+  animation: gradient-animation-dark 20s ease infinite; /* 20 секунд, плавная, бесконечная */
+}
+
+.bg-animated-light {
+  background: linear-gradient(
+    135deg,
+    #f9fafb 0%,
+    /* Очень светлый серый */ #e0e7ff 25%,
+    /* Светло-голубой */ #c5cae9 50%,
+    /* Мягкий лавандовый */ #e0e7ff 75%,
+    #f9fafb 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-animation-light 20s ease infinite;
+}
+
+@keyframes gradient-animation-dark {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient-animation-light {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "Bosh sahifa": "Bosh sahifa",
+  "Kurslar": "Kurslar",
+  "Biz haqimizda": "Biz haqimizda",
+  "Aloqa": "Aloqa",
+  "Blog": "Blog",
+  "Kurslarga yozilish": "Kurslarga yozilish",
+  "Zamonaviy": "Zamonaviy",
+  "Interaktiv": "Interaktiv",
+  "Ta'lim markazi": "Ta'lim markazi",
+  "Eng so‘nggi texnologiyalar asosida darslar, tajribali o‘qituvchilar va kuchli natijalar. Siz ham o‘z sohangizning mutaxassisi bo‘ling!": "Eng so‘nggi texnologiyalar asosida darslar, tajribali o‘qituvchilar va kuchli natijalar. Siz ham o‘z sohangizning mutaxassisi bo‘ling!",
+  "Kurslarni ko‘rish": "Kurslarni ko‘rish",
+  "Kurslarimiz bilan tanishing": "Kurslarimiz bilan tanishing",
+  "Ko‘proq kurslar": "Ko‘proq kurslar",
+  "comments": {
+    "title": "Biz haqimizda fikrlar"
+  },
+  "faq": {
+    "title": "Sizning savollaringizga javoblar",
+    "subtitle": "Platformamiz haqidagi eng keng tarqalgan savollarni to'pladik. Agar bu yerda o'z savolingizga javob topa olmasangiz, bizning qo'llab-quvvatlash jamoamizga murojaat qiling.",
+    "faq1": {
+      "q": "Obuna modeli qanday ishlaydi?",
+      "a": "Bizning obuna modelimiz moslashuvchanlik uchun mo'ljallangan. Siz oylik yoki yillik rejani tanlashingiz va istalgan vaqtda yashirin to'lovlarsiz bekor qilishingiz mumkin. Yillik rejalar sezilarli chegirmaga ega."
+    },
+    "faq2": {
+      "q": "Mahsulotingizni boshqa vositalar bilan integratsiya qila olamanmi?",
+      "a": "Albatta. Biz Slack, Google Drive va Trello kabi mashhur platformalar bilan kuchli API va mahalliy integratsiyalarni taklif qilamiz. Maqsadimiz — sizning mavjud ish jarayoningizga muammosiz moslashish."
+    },
+    "faq3": {
+      "q": "Siz qanday turdagi yordamni taklif qilasiz?",
+      "a": "Biz jonli chat va elektron pochta orqali 24/7 premium qo'llab-quvvatlashni ta'minlaymiz. Bizning maxsus qo'llab-quvvatlash jamoamiz har doim siz duch keladigan har qanday savol yoki muammolar bo'yicha yordam berishga tayyor."
+    },
+    "faq4": {
+      "q": "Mening ma'lumotlarim xavfsizmi?",
+      "a": "Ma'lumotlar xavfsizligi bizning ustuvor vazifamizdir. Ma'lumotlaringiz doimo xavfsiz bo'lishini ta'minlash uchun biz to'liq shifrlash, muntazam xavfsizlik tekshiruvlaridan foydalanamiz va GDPR va CCPA kabi barcha asosiy ma'lumotlarni himoya qilish qoidalariga rioya qilamiz."
+    }
+  },
+  "Наши достижения": "Bizning yutuqlarimiz",
+  "Цифры, которые говорят сами за себя": "O'z-o'zidan so'zlaydigan raqamlar",
+  "Главные показатели": "Asosiy ko'rsatkichlar",
+  "Популярность направлений": "Mashhur yo'nalishlar",
+  "Какое направление выбирают наши студенты чаще всего.": "Talabalarimiz qaysi yo'nalishni ko'proq tanlashadi.",
+  "Рост и успешность за последние годы": "So'nggi yillardagi o'sish va muvaffaqiyat darajasi",
+  "Как мы росли и улучшали наши результаты год за годом.": "Qanday qilib biz yil sayin o'sib, natijalarimizni yaxshilab bordik.",
+  "Студентов": "Talabalar",
+  "Успешность": "Muvaffaqiyat darajasi",
+  "студентов": "talabalar",
+  "stats.students": "Talabalar",
+  "stats.courses": "Kurslar",
+  "stats.teachers": "O'qituvchilar",
+  "stats.certificates": "Sertifikatlar",
+
+  "stats": {
+    "title": "Yutuqlarimiz",
+    "subtitle": "Platformamiz muvaffaqiyatlarini aks ettiruvchi real raqamlar.",
+    "students": "Talabalar",
+    "courses": "Kurslar",
+    "teachers": "O‘qituvchilar",
+    "certificates": "Sertifikatlar"
+  },
+  "clientFeedback": "Mijozlarning fikr-mulohazalari",
+  "whatTheySay": "Mahsulotimizdan foydalangandan so'ng ular nima deydi",
+  "viewAll": "Hammasini ko'rish",
+  "testimonial1.name": "Muhammadrizo Maribjonov",
+  "testimonial1.quote": "Talabchan o'qituvchilarga muhtoj edim, chunki kimdir meni doim o'qishga undamasa, o'qimasdim. Ilmhubga kelib, izlagan o'qituvchilarni topdim.",
+  "testimonial2.name": "Nafisa O'taboyeva",
+  "testimonial2.quote": "Algoritmlar bo'yicha eng sevimli o'qituvchim, u Alloh bergan bilimlarini yoshlar bilan tabassum bilan baham ko'rishdan charchamaydi 🙂. Kelajakda xohlagan barcha ishlaringizda omad tilayman.",
+  "testimonial3.name": "Isroil Kasimov",
+  "testimonial3.quote": "Qiziqish uchun kursga tashrif buyurdim, interyer va dars o'tish yuqori darajada.",
+  "testimonial4.name": "Akbarkhon Akramkhuzhaev",
+  "testimonial4.quote": "Ajoyib joy",
+  "testimonial5.name": "Lola",
+  "testimonial5.quote": "Yaxshi ta'lim",
+  "testimonial6.name": "Sarvar M.",
+  "testimonial6.quote": "Ma'lum bo'lishicha, juda qiziqarli zamonaviy kurslar",
+  "courses.title": "Bizning kurslarimiz",
+  "courses.subtitle": "IlmHub bilan muvaffaqiyatga erishish yo'lingizni tanlang",
+  "courses.price_label": "Narxi",
+  "courses.duration_label": "Davomiyligi",
+  "courses.months": "oy",
+  "courses.no_courses_found": "Ushbu kategoriyada kurslar topilmadi.",
+
+  "courses.foundation_programming.title": "Foundation Programming",
+  "courses.foundation_programming.desc": "Ushbu kurs kelajakdagi dasturchilar uchun mustahkam poydevor bo'lib, dasturlash olamiga birinchi qadam hisoblanadi.",
+  "courses.dotnet_bootcamp.title": ".NET Bootcamp",
+  "courses.dotnet_bootcamp.desc": ".NET framework dasturlashning ko'plab sohalarida, masalan, mobil, veb va ish stoli ilovalarida qo'llaniladi. Chuqur o'rganish uchun butkamp.",
+  "courses.dotnet_backend.title": ".NET Backend",
+  "courses.dotnet_backend.desc": "Ushbu kurs dasturlashda asosiy bilimlarga ega bo'lgan va ilovalarning server qismini ishlab chiqishga ixtisoslashmoqchi bo'lganlar uchun mos keladi.",
+  "courses.ai_bootcamp.title": "AI Bootcamp",
+  "courses.ai_bootcamp.desc": "Ushbu kurs Mashina o'rganish tushunchalari, algoritmlari va aqlli tizimlarni yaratish tamoyillarini tanishtiradi.",
+  "courses.flutter_mobile.title": "Flutter Kros-platforma (Flutter Mobile)",
+  "courses.flutter_mobile.desc": "Flutter Google tomonidan ishlab chiqilgan SDK bo'lib, u bitta kod bazasidan iOS va Android uchun dasturlar yaratishi mumkin.",
+  "courses.python_beginner_kids.title": "Python boshlang'ich (Bolalar uchun)",
+  "courses.python_beginner_kids.desc": "Python Beginner kursi dasturlashga birinchi qadam bo'lib, bolalar uchun o'rganishni qiziqarli qilish maqsadida maxsus ishlab chiqilgan.",
+  "courses.arduino_robotics_kids.title": "Arduino & Robototexnika (Bolalar uchun)",
+  "courses.arduino_robotics_kids.desc": "Robototexnika moduli asosan elektronika, dasturlash va o'z robotlarini yaratishga qiziquvchi maktab yoshidagi bolalar uchun mo'ljallangan.",
+  "courses.scratch_kids.title": "Scratch (Bolalar uchun)",
+  "courses.scratch_kids.desc": "Bizning kursimiz dasturlashda birinchi qadamlarini oson va o'yin tarzida qo'ymoqchi bo'lgan maktab yoshidagi bolalar uchun mo'ljallangan.",
+
+  "courses.view_all": "Barcha kurslarni ko'rish",
+  "courses.learn_more": "Batafsil",
+  "courses.learn_more_about": "{{course}} kursi haqida batafsil ma'lumot",
+  "courses": {
+    "price_label": "Narxi",
+    "duration_label": "Davomiyligi",
+    "month_one": "oy",
+    "month_few": "oy",
+    "month_many": "oy",
+    "learn_more": "Batafsil",
+    "view_details": "Batafsil ma'lumot",
+
+    "foundation_programming": {
+      "title": "Foundation (Dasturlash)",
+      "desc": "Bizning Foundation kursimiz dasturlash olamiga ilk qadamlarini qo'yayotganlar uchun mo'ljallangan.",
+      "full_description": "Bu kurs dasturchi bo'lishni orzu qiladigan, lekin qayerdan boshlashni bilmaydigan har bir kishi uchun ideal boshlang'ich nuqtadir. Biz oddiy va tushunarli misollardan foydalangan holda dasturlash mantiqi, algoritmlar va ma'lumotlar tuzilmalarining asoslarini qamrab olamiz. Siz toza va samarali kod yozishni o'rganasiz, bu esa har qanday dasturlash tilini keyinchalik o'rganish uchun mustahkam poydevor yaratadi. Kurs oxirida siz veb-ishlab chiqish yoki ma'lumotlar tahlili kabi ilg'or mavzularga tayyor bo'lasiz."
+    },
+    "dotnet_bootcamp": {
+      "title": ".NET Bootcamp",
+      "desc": ".NET bo'yicha intensiv bootkamp, bu sizni dasturchi faoliyatiga tayyorlaydi.",
+      "full_description": "Intensiv .NET bootkamp, bu sizni dasturchi faoliyatiga tayyorlaydi. C#, ASP.NET Core va ma'lumotlar bazalariga chuqur sho'ng'ish. Kurs amaliy loyihalar, jamoaviy ish va suhbatlarga tayyorgarlikni o'z ichiga oladi. Siz to'liq veb-ilovalar yaratishni, freymvorklar va dizayn shablonlari bilan ishlashni, shuningdek, ilovalarni bulutga joylashtirishni o'rganasiz. Tezda talab qilinadigan kasbni egallashni istaganlar uchun juda mos keladi."
+    },
+    "dotnet_backend": {
+      "title": ".NET Backend",
+      "desc": ".NET yordamida kuchli va kengaytiriladigan server ilovalarini yarating.",
+      "full_description": ".NET yordamida kuchli va kengaytiriladigan server ilovalarini yarating. Kurs API yaratish, mikroservislar, ma'lumotlar bazalari (SQL, NoSQL) bilan ishlash va bulut texnologiyalarini (Azure/AWS) qamrab oladi. Siz barqaror tizimlarni qanday qurishni, ma'lumotlar xavfsizligini ta'minlashni va ishlashni optimallashtirishni bilib olasiz. Bu kurs Microsoft ekotizimida o'z bilimlarini chuqurlashtirishni istagan backend dasturchilar uchun zarur."
+    },
+    "ai_bootcamp": {
+      "title": "AI Bootcamp",
+      "desc": "Sun'iy intellekt va mashina o'rganishi dunyosiga sho'ng'ing.",
+      "full_description": "Sun'iy intellekt va mashina o'rganishi dunyosiga sho'ng'ing. AI modellarini yaratish va joylashtirish bo'yicha amaliy kurs. Siz ma'lumotlar tahlili uchun Python asoslarini, mashina o'rganish algoritmlarini (klassifikatsiya, regressiya, klasterlash), shuningdek, neyron tarmoqlarga kirishni o'rganasiz. Kurs olingan bilimlarni haqiqiy muammolarni hal qilish uchun amaliy qo'llashga qaratilgan."
+    },
+    "flutter_mobile": {
+      "title": "Flutter (Mobil dasturlash)",
+      "desc": "Google'ning Flutter freymworki yordamida iOS va Android uchun chiroyli va samarali mobil ilovalar yaratishni o'rganing.",
+      "full_description": "Google'ning Flutter freymworki yordamida iOS va Android uchun chiroyli va samarali mobil ilovalar yaratishni o'rganing. Kurs Dart tilining asoslarini, Flutter vidjetlarini, holatni boshqarishni, API bilan ishlashni va ilovalarni nashr etishni qamrab oladi. Siz bir nechta to'liq funksional ilovalar yaratasiz, ular bir xil kod bazasi bilan ikkala platformada ham ishlaydi."
+    },
+    "python_beginner_kids": {
+      "title": "Python bolalar uchun (Boshlang'ich)",
+      "desc": "Bolalar uchun maxsus ishlab chiqilgan Python dasturlash asoslari bo'yicha qiziqarli va interaktiv kurs.",
+      "full_description": "Bolalar uchun maxsus ishlab chiqilgan Python dasturlash asoslari bo'yicha qiziqarli va interaktiv kurs. Mantiq va ijodkorlikni jumboqlarni yechish, oddiy o'yinlar va animatsiyalar yaratish orqali rivojlantiramiz. Bolalar kodlashning asosiy tushunchalarini o'yin shaklida o'rganadilar, bu ularning ITga qiziqishini rag'batlantiradi va tanqidiy fikrlash ko'nikmalarini rivojlantiradi."
+    },
+    "arduino_robotics_kids": {
+      "title": "Arduino va Robototexnika (Bolalar)",
+      "desc": "Arduino platformasi yordamida elektronika va robototexnika dunyosiga kirish.",
+      "full_description": "Arduino platformasi yordamida elektronika va robototexnika dunyosiga kirish. Bolalar oddiy robotlarni yig'ish va dasturlashni, datchiklar va ijro etuvchi mexanizmlarni boshqarishni o'rganadilar. Kurs muhandislik fikrlashini, muammolarni hal qilish ko'nikmalarini va mayda motorika qobiliyatini rivojlantiradi, shuningdek, fizika va elektronika asoslari bilan tanishtiradi."
+    },
+    "scratch_kids_original": {
+      "title": "Scratch (Bolalar - Asl)",
+      "desc": "Vizual dasturlash orqali mantiqiy fikrlashni rivojlantirish.",
+      "full_description": "Eng kichiklar uchun vizual dasturlash, Scratch muhitida o'yinlar va animatsiyalar yaratish orqali mantiqiy fikrlashni rivojlantirish. Bolalar kod yozmasdan, faqat bloklarni sudrab olib, algoritmlar, sikllar, shartlar va o'zgaruvchilarning asoslarini o'zlashtiradilar. Bu ijodkorlik va analitik qobiliyatlarni rivojlantirish uchun ajoyib boshlanishdir."
+    },
+    "scratch_kids": {
+      "title": "Scratch (Bolalar)",
+      "desc": "Kursimiz Scratch vizual tili yordamida dasturlashda ilk qadamlarini qo'yishni istagan maktab o'quvchilari uchun mo'ljallangan.",
+      "full_description": "Kursimiz Scratch vizual tili yordamida dasturlashda ilk qadamlarini qo'yishni istagan maktab o'quvchilari uchun mo'ljallangan. Ular o'zlarining interaktiv hikoyalari, o'yinlari va animatsiyalarini yaratishni o'rganadilar, mantiqiy fikrlash va ijodiy qobiliyatlarni rivojlantiradilar. Kurs o'yin shaklida o'tadi, bu esa o'qitishni yosh dasturchilar uchun qiziqarli va qulay qiladi."
+    },
+    "react_native_mobile": {
+      "title": "React Native (Mobil dasturlash)",
+      "desc": "Kross-platforma mobil ilovalarini yaratish uchun React Native'ni o'rganing.",
+      "full_description": "Kross-platforma mobil ilovalarini yaratish uchun React Native'ni o'rganing. iOS va Android'da bir xil kod bazasi bilan ishlaydigan haqiqiy ilovalarni yarating. Kurs React, Redux, navigatsiya, mahalliy saqlash va API bilan ishlash asoslarini qamrab oladi. Siz zamonaviy mobil ilovalar yaratish uchun zarur bo'lgan barcha vositalarni o'zlashtirasiz."
+    },
+    "ios_mobile_swift": {
+      "title": "iOS Mobile (Swift)",
+      "desc": "Apple'ning kuchli va intuitiv dasturlash tili Swift yordamida iPhone va iPad uchun mahalliy ilovalarni yarating.",
+      "full_description": "Apple'ning kuchli va intuitiv dasturlash tili Swift yordamida iPhone va iPad uchun mahalliy ilovalarni yarating. Kurs Swift, UIKit/SwiftUI asoslari, ilova hayot sikli, ma'lumotlar bilan ishlash va qurilma apparaturasi bilan o'zaro ishlashni o'z ichiga oladi. Siz App Store'da nashr etishga tayyor bo'lgan bir nechta to'liq iOS-ilovalarini ishlab chiqasiz."
+    },
+    "python_backend": {
+      "title": "Python Backend",
+      "desc": "Bizning Python Backend kursimiz Python, Django va Flask yordamida veb-ilovaning server qismini ishlab chiqishni o'zlashtirishni istaganlar uchun ajoyib tanlovdir.",
+      "full_description": "Bizning Python Backend kursimiz Python, Django va Flask yordamida veb-ilovaning server qismini ishlab chiqishni o'zlashtirishni istaganlar uchun ajoyib tanlovdir. Siz RESTful API, ma'lumotlar bazalari (PostgreSQL), autentifikatsiya, avtorizatsiya va ilovalarni joylashtirishni o'rganasiz. Kurs ko'plab amaliy topshiriqlar va haqiqiy loyihalarni o'z ichiga oladi, bu sizga malakali backend dasturchi bo'lishga yordam beradi."
+    },
+    "phonics_level1": {
+      "title": "Phonics Level 1",
+      "desc": "Phonics Level 1 – bu bolalar uchun inglizcha so'zlarni o'qish va talaffuz qilishda mustahkam poydevor qo'yish uchun mo'ljallangan boshlang'ich kurs.",
+      "full_description": "Phonics Level 1 – bu bolalar uchun inglizcha so'zlarni o'qish va talaffuz qilishda mustahkam poydevor qo'yish uchun mo'ljallangan boshlang'ich kurs. Biz interaktiv o'yinlar, qo'shiqlar va qiziqarli topshiriqlardan foydalanamiz, bu esa o'qitish jarayonini qiziqarli va samarali qiladi. Bolalar ingliz tilining asosiy tovushlarini tanishni, ularni harflar bilan moslashtirishni va oddiy so'zlarni o'qishni o'rganadilar, bu esa erkin o'qish uchun asosiy qadamdir."
+    },
+    "phonics_level2": {
+      "title": "Phonics Level 2",
+      "desc": "Phonics Level 2 Phonics Level 1'da olingan ko'nikmalarni rivojlantirishda davom etadi.",
+      "full_description": "Phonics Level 2 Phonics Level 1'da olingan ko'nikmalarni rivojlantirishda davom etadi, tovushlar va harf birikmalarini tushunishni chuqurlashtiradi. Bu bosqichda bolalar yanada murakkab so'zlarni o'qishni o'rganadilar, digraflar va diftonglarni o'zlashtiradilar. Kurs qisqa jumlalarni o'qish bo'yicha ko'proq guruh o'yinlari va mashqlarni o'z ichiga oladi, bu esa o'qish ko'nikmalariga ishonch hosil qilishga yordam beradi."
+    },
+    "phonics_level3": {
+      "title": "Phonics Level 3",
+      "desc": "Phonics Level 3 talabalarning fonetika bo'yicha bilimlarini chuqurlashtiradi.",
+      "full_description": "Phonics Level 3 talabalarning fonetika bo'yicha bilimlarini chuqurlashtiradi va ularga murakkabroq o'qish va talaffuz qoidalarini o'zlashtirishga yordam beradi. Bu kursda uzun unlilar, bo'g'inlash qoidalari va bir nechta bo'g'inli so'zlarni o'qish ko'rib chiqiladi. Talabalar qisqa hikoyalar va she'rlarni o'qishni boshlaydilar, bu esa ularning matnni tushunishini va o'qish tezligini yaxshilaydi."
+    },
+    "phonics_level4": {
+      "title": "Phonics Level 4",
+      "desc": "Phonics Level 4 Phonics dasturining yakuniy bosqichi bo'lib, erkin o'qish uchun olingan barcha bilim va ko'nikmalarni mustahkamlaydi.",
+      "full_description": "Phonics Level 4 Phonics dasturining yakuniy bosqichi bo'lib, erkin o'qish uchun olingan barcha bilim va ko'nikmalarni mustahkamlaydi. Bolalar qoidalardan istisnolarni o'rganadilar, murakkab matnlarni o'qishni o'zlashtiradilar va intonatsiya ustida ishlaydilar. Kurs kelajakda mustaqil o'qishni rivojlantirish va murakkabroq o'quv materiallariga tayyorgarlik ko'rishga qaratilgan."
+    }
+  },
+  "categories": {
+    "all": "Hammasi",
+    "foundation": "Foundation",
+    "bootcamp": "Bootcamp",
+    "backend": "Backend",
+    "ai": "AI",
+    "mobile": "Mobil",
+    "kids": "Bolalar",
+    "kiddish": "Kichkintoylar uchun"
+  },
+  "coursesPage": {
+    "title": "Bizning kurslar",
+    "subtitle": "Barcha yoshdagi va tayyorgarlik darajasidagi talabalar uchun mo'ljallangan keng ko'lamli kurslarimizni kashf eting. IT sohasida o'z yo'lingizni bugunoq boshlang!",
+    "filters": {
+      "title": "Filtrlar",
+      "search": "Kurslar bo'yicha qidirish",
+      "search_placeholder": "Nomini yoki tavsifini kiriting...",
+      "category": "Kategoriya",
+      "price_range": "Narx diapazoni",
+      "duration_range": "Davomiylik diapazoni (oy)",
+      "sort_by": "Saralash",
+      "sort_default": "Standart bo'yicha",
+      "sort_price_asc": "Narxi (o'suvchi)",
+      "sort_price_desc": "Narxi (kamayuvchi)",
+      "sort_duration_asc": "Davomiyligi (o'suvchi)",
+      "sort_duration_desc": "Davomiyligi (kamayuvchi)",
+      "reset_filters": "Filtrlarni tiklash"
+    },
+    "no_results": {
+      "oops": "Ups!",
+      "message": "So'rovingizga mos keladigan kurslar topilmadi shekilli. Filtrlash mezonlarini o'zgartirib ko'ring.",
+      "reset_filters_btn": "Filtrlarni tiklash"
+    }
+  },
+  "modal": {
+    "close_button_aria": "Modal oynani yopish",
+    "rating_label": "Reyting",
+    "students_label": "Talabalar",
+    "level_label": "Daraja",
+    "age_label": "Yosh",
+    "full_description_heading": "Kursning to'liq tavsifi",
+    "contact_us": "Biz bilan bog'lanish"
+  },
+  "levels": {
+    "beginner": "Boshlang'ich",
+    "intermediate": "O'rta",
+    "advanced": "Yuqori",
+    "preschool": "Maktabgacha"
+  },
+  "hero": {
+    "description": "Ilm Hub o'quv markazida o'zgaruvchan ta'lim tajribasini kashf eting, bu yerda innovatsiya ta'lim bilan uchrashib, sizning to'liq salohiyatingizni ochadi."
+  },
+  "advantages": {
+    "title": "Nima uchun Ilm Hubni tanlash kerak?",
+    "items": [
+      {
+        "title": "Zamonaviy o'quv dasturi",
+        "description": "Bizning dasturlarimiz so'nggi sanoat tendensiyalari asosida ishlab chiqilgan bo'lib, sizni tez o'zgaruvchan dunyoda oldinda bo'lishingizni ta'minlaydi."
+      },
+      {
+        "title": "Hamjamiyat asosidagi ta'lim",
+        "description": "O'quvchilar va o'qituvchilarning jonli hamjamiyatiga qo'shiling, hamkorlik va o'sishni rag'batlantiring."
+      },
+      {
+        "title": "Ishonchli sifat",
+        "description": "Bizning kurslarimiz mutaxassislar tomonidan ishonchli va ta'sirli ta'limni ta'minlash uchun ishlab chiqilgan."
+      },
+      {
+        "title": "Shaxsiylashtirilgan ta'lim yo'llari",
+        "description": "Sizning noyob maqsadlaringiz va o'qish uslubingizga moslashtirilgan dasturlar."
+      },
+      {
+        "icon": "Lightbulb",
+        "title": "Innovatsion o'qitish usullari",
+        "description": "O'quv tajribangizni yaxshilash uchun interaktiv va zamonaviy o'qitish usullaridan foydalaning."
+      },
+      {
+        "icon": "Award",
+        "title": "E'tirof etilgan mukammallik",
+        "description": "Bizning sertifikatlarimiz va yutuqlarimiz global miqyosda e'tirof etilgan bo'lib, sizning karyera imkoniyatlaringizni oshiradi."
+      }
+    ]
+  },
+  "teachers": {
+    "title": "Bizning mutaxassis o'qituvchilarimiz bilan tanishing",
+    "teachers": [
+      {
+        "name": "Vohid",
+        "title": "Katta dasturlash o'qituvchisi"
+      },
+      {
+        "name": "Kilichbek",
+        "title": "Ma'lumotlar tahlili bo'yicha mutaxassis"
+      },
+      {
+        "name": "Davron",
+        "title": "Veb ishlab chiqish bo'yicha murabbiy"
+      }
+    ]
+  },
+
+  "cta": {
+    "title": "Bugun o'z sayohatingizni boshlang!",
+    "description": "Ilm Hub o'quv markaziga qo'shiling va innovatsion kurslarimiz va mutaxassis rahbarligimiz bilan yorqin kelajakka birinchi qadamni qo'ying.",
+    "buttons": {
+      "enroll": "Hozir ro'yxatdan o'ting",
+      "learnMore": "Ko'proq bilib oling"
+    }
+  },
+  "contact": {
+    "title": "Keling, bog'lanaylik, ijod qilaylik!",
+    "description": "Loyiha g'oyasi, savol yoki shunchaki salom aytmoqchimisiz? Quyida bizga xabar yuboring. Biz har doim sizdan xabar olishdan va yangi imkoniyatlarni kashf qilishdan xursandmiz.",
+    "form": {
+      "name": "To'liq ismingiz",
+      "email": "Elektron pochta manzilingiz",
+      "subject": "Xabaringiz mavzusi",
+      "message": "Xabaringizni shu yerga yozing...",
+      "send": "Xabar yuborish"
+    }
+  },
+  "footer": {
+    "missionStatement": "Ilm Hub bilim, innovatsiya va kelajak uchun raqamli ta'lim markazi hisoblanadi.",
+    "learnMore": "Batafsil maʼlumot",
+    "links": "Foydali havolalar",
+    "reachUs": "Biz bilan bog‘laning",
+    "newsletterTitle": "Axborot byulleteni",
+    "newsletterDesc": "Yangiliklar va yangilanishlarni olish uchun ro‘yxatdan o‘ting.",
+    "newsletterPlaceholder": "Email manzilingizni kiriting",
+    "newsletterDisclaimer": "Biz sizning shaxsiy ma'lumotlaringizni hech qachon uchinchi tomonlarga bermaymiz.",
+    "subscribe": "Obuna bo‘lish",
+    "rights": "Barcha huquqlar himoyalangan.",
+    "blog": "Blog",
+    "address": "Toshkent, O‘zbekiston"
+  },
+  "categories.all": "Barchasi",
+  "categories.foundation": "Foundation",
+  "categories.bootcamp": "Butkamp",
+  "categories.backend": "Backend",
+  "categories.ai": "AI",
+  "categories.mobile": "Mobil",
+  "categories.kids": "Bolalar"
+}

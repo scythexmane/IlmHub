@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useContext } from "react";
 import { ThemeContext } from "../ThemeContext";
+import { motion, AnimatePresence } from "framer-motion";
+import logo from "../assets/logo.svg"
+
 import {
   FaTelegram,
   FaInstagram,
@@ -48,9 +51,17 @@ const Footer = () => {
         <div>
           <Link
             to="/"
-            className="text-3xl font-extrabold text-[var(--color-primary)] mb-4 block"
+            className="text-3xl font-extrabold text-[var(--color-text)] tracking-tight drop-shadow-md"
+            aria-label={t("Перейти на домашнюю страницу Ilm Hub")}
           >
-            Ilm Hub
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2"
+            >
+              <img src={logo} width={150} alt="" />
+            </motion.span>
           </Link>
           <p className="text-base text-[var(--color-muted)] mb-4">
             {t("footer.missionStatement")}

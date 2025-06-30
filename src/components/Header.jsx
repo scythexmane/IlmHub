@@ -7,7 +7,7 @@ import { ThemeContext } from '../ThemeContext';
 import '../index.css';
 // Lucide Icons
 import { Phone, Send, Sun, Moon, Menu, X, BookOpenText, Globe } from 'lucide-react';
-
+import logo from "../assets/logo.svg"
 const Header = () => {
   const { i18n, t } = useTranslation();
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -131,8 +131,7 @@ const Header = () => {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="inline-flex items-center gap-2"
             >
-              <BookOpenText size={30} style={{ color: 'var(--color-primary)' }} /> {/* Иконка primary */}
-              Ilm <span style={{ color: 'var(--color-primary)' }}>Hub</span>
+              <img src={logo} width={150} alt="" />
             </motion.span>
           </Link>
 

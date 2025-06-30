@@ -6,6 +6,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
     './src/**/*.{js,ts,jsx,tsx}', // Убедитесь, что ваш src также сканируется
+    "./public/index.html",  
   ],
   theme: {
     extend: {

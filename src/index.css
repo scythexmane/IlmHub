@@ -178,7 +178,22 @@ body[data-theme="dark"] {
     color: var(--text-main-light);
   }
 }
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -15px; /* Adjust this to match your desired gap between columns */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 15px; /* Adjust this to match your desired gap between columns */
+  background-clip: padding-box;
+}
 
+/* Style your items */
+.my-masonry-grid_column > div {
+  margin-bottom: 15px; /* Adjust this to match your desired gap between rows */
+}
 /* Global transitions for smooth theme changes */
 body {
   transition: background-color 0.7s ease, color 0.7s ease;
@@ -186,12 +201,12 @@ body {
 .glass-effect {
   background: linear-gradient(
     120deg,
-    rgba(36, 36, 36, 0.761),
-    rgba(33, 33, 33, 0.617)
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.05)
   );
-  border-bottom: 1px solid rgba(43, 43, 43, 0.773);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.543);
-  backdrop-filter:; /* Без blur */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: none; /* Без blur */
 }
 @keyframes float-blob {
   0%,

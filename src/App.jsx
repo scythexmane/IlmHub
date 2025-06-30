@@ -13,7 +13,7 @@ import Home from "./pages/Home";
 import Courses from "./pages/CoursesPage";
 import About from "./pages/About.jsx";
 import Contacts from "./pages/ContactsPage.jsx";
-// import Blog from "./pages/Blog";
+import Blog from "./pages/Blog.jsx";
 
 const AppLayout = () => {
   const location = useLocation();
@@ -31,7 +31,7 @@ const AppLayout = () => {
           <Route path="/courses" element={<Courses />} />
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<Contacts />} />
-          {/* <Route path="/blog" element={<Blog />} /> */}
+          <Route path="/blog" element={<Blog />} />
         </Routes>
       </main>
       <Footer />

@@ -15,6 +15,8 @@
   "comments": {
     "title": "Biz haqimizda fikrlar"
   },
+  "findUs": "Manzilimiz",
+  "visitUsDesc": "Bizning ofisimizga tashrif buyuring yoki xaritada ko'ring.",
   "Наши достижения": "Bizning yutuqlarimiz",
   "Цифры, которые говорят сами за себя": "O'z-o'zidan so'zlaydigan raqamlar",
   "Главные показатели": "Asosiy ko'rsatkichlar",
@@ -38,6 +40,28 @@
     "teachers": "O‘qituvchilar",
     "certificates": "Sertifikatlar"
   },
+   "translation": {
+      "galleryTitle": "Media Galereyasi",
+      "closeModal": "Media korish oynasini yopish",
+      "previousMedia": "Oldingi media",
+      "nextMedia": "Keyingi media",
+      "img1Title": "Innovatsion Talim Muhiti",
+      "img1Description": "Interaktiv talim uchun moljallangan zamonaviy sinflarimizga nazar.",
+      "vid2Title": "Texnologiya Innovatsiyalari Markazi",
+      "vid2Description": "Bizning eng zamonaviy innovatsion laboratoriyamizdagi songgi loyihalarni namoyish etish.",
+      "img3Title": "Talabalar Laboratoriya Mashgulotlari",
+      "img3Description": "Talabalar zamonaviy laboratoriyalarimizda amaliy tajribalar bilan shugullanishmoqda.",
+      "vid4Title": "Kampus Hayoti Yangiliklari",
+      "vid4Description": "Bizning jonli kampusimizdagi kundalik hayot va voqealarning dinamik montaji.",
+      "img5Title": "Ilgor Tadqiqot Loyihasi",
+      "img5Description": "Professor-oqituvchilarimiz va talabalarimiz kashfiyotchi tadqiqotlar ustida hamkorlik qilmoqda.",
+      "img6Title": "Bitiruv Kuni Bayrami",
+      "img6Description": "Yaqinda bolib otgan bitiruv marosimimizdan quvonchli lahzalar, muvaffaqiyatni nishonlash.",
+      "vid7Title": "Bitiruvchilar Bilan Uchrashuv",
+      "vid7Description": "Otmish va hozirni boglash: muvaffaqiyatli kasbiy tarmoq kechasi.",
+      "img8Title": "Zamonaviy Kutubxona Makonlari",
+      "img8Description": "Bizning ulkan kutubxonamiz oqish va hamkorlik uchun tinch va ilhomlantiruvchi muhitni taklif etadi."
+    },
   "clientFeedback": "Mijozlarning fikr-mulohazalari",
   "whatTheySay": "Mahsulotimizdan foydalangandan so'ng ular nima deydi",
   "viewAll": "Hammasini ko'rish",

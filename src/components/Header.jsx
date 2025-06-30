@@ -77,6 +77,7 @@ const Header = () => {
     { name: t("Kurslar"), path: "/courses" },
     { name: t("Biz haqimizda"), path: "/about" },
     { name: t("Aloqa"), path: "/contacts" },
+    { name: t("Blog"), path: "/blog" }
   ];
 
   const menuVariants = {

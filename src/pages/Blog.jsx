@@ -465,14 +465,7 @@ const Gallery = () => {
         onNavigate={handleNavigate}
       />
 
-      {/* Логотип Яндекс в правом нижнем углу (фиксированный) */}
-      <div className="fixed bottom-4 right-4 z-40">
-        <img
-          src="/src/assets/yandex_logo.png"
-          alt="Yandex"
-          className="h-10 w-auto opacity-70"
-        />
-      </div>
+      
     </div>
   );
 };

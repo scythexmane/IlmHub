@@ -430,7 +430,7 @@ const CoursesPreview = () => {
       <motion.div
         layout
         transition={{ type: "spring", duration: 0.6, bounce: 0.2 }}
-        className="relative z-10"
+        className="relative z-10 max-w-400 m-auto"
       >
         <AnimatePresence mode="popLayout">
           <motion.div

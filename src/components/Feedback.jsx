@@ -5,7 +5,6 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 // --- 1. Данные отзывов ---
-// constants/testimonials.js (интегрировано)
 const testimonialsData = [
   { id: 1, nameKey: 'testimonial1.name', quoteKey: 'testimonial1.quote', rating: 5, avatar: 'avatar-1.jpg' },
   { id: 2, nameKey: 'testimonial2.name', quoteKey: 'testimonial2.quote', rating: 4.5, avatar: 'avatar-2.jpg' },
@@ -18,7 +17,6 @@ const testimonialsData = [
 ];
 
 // --- 2. Компонент StarRatingDisplay ---
-// src/components/Testimonials/StarRatingDisplay.jsx (интегрировано)
 export const StarRatingDisplay = ({ rating, size = 'w-5 h-5' }) => {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 !== 0;
@@ -70,7 +68,6 @@ export const StarRatingDisplay = ({ rating, size = 'w-5 h-5' }) => {
 };
 
 // --- 3. Компонент TestimonialCard ---
-// src/components/Testimonials/TestimonialCard.jsx (интегрировано)
 const TestimonialCard = ({ testimonial }) => {
   const { t } = useTranslation();
   const { nameKey, quoteKey, rating, avatar } = testimonial;
@@ -81,10 +78,11 @@ const TestimonialCard = ({ testimonial }) => {
     <motion.div
       className="flex flex-col p-6 rounded-3xl
                  bg-[--color-bg-card]
-                 w-[320px] h-64 flex-shrink-0 mx-3 mb-6
+                 w-[320px] md:w-[320px] h-64 flex-shrink-0 mx-3 mb-6
                  shadow-lg hover:shadow-2xl transition-all duration-500 ease-in-out
                  transform hover:-translate-y-2
-                 md:mb-0 relative overflow-hidden group"
+                 md:mb-0 relative overflow-hidden group
+                 testimonial-card-responsive"
       initial={{ opacity: 0, y: 50, rotateX: -10 }}
       animate={{ opacity: 1, y: 0, rotateX: 0 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
@@ -120,7 +118,6 @@ const TestimonialCard = ({ testimonial }) => {
 };
 
 // --- 4. Компонент RatingSummaryCard ---
-// src/components/Testimonials/RatingSummaryCard.jsx (интегрировано)
 const RatingSummaryCard = ({ averageRating = 4.7, totalRatings = 6, link = 'https://yandex.uz/maps/org/196532200053/reviews/?ll=71.658637%2C41.003807&utm_campaign=v1&utm_medium=rating&utm_source=badge&z=16' }) => {
   const { t } = useTranslation();
 
@@ -145,7 +142,6 @@ const RatingSummaryCard = ({ averageRating = 4.7, totalRatings = 6, link = 'http
       <p className="text-[--color-text-light] text-sm mt-3 font-medium">
         {t('basedOn')} <strong className="text-[--color-text]">{totalRatings}</strong> {t('reviews')}
       </p>
-
     </motion.div>
   );
 };
@@ -240,7 +236,7 @@ i18n
     }
   });
 
-// --- 6. Основной компонент Feedback (ранее App.jsx) ---
+// --- 6. Основной компонент Feedback ---
 export function Feedback() {
   const { t, i18n } = useTranslation();
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -279,7 +275,8 @@ export function Feedback() {
     i18n.changeLanguage(lang);
   };
 
-  const duplicatedTestimonials = [...testimonialsData, ...testimonialsData, ...testimonialsData];
+  // Дублируем отзывы больше раз для более плавного и длинного "бесконечного" скролла
+  const duplicatedTestimonials = [...testimonialsData, ...testimonialsData, ...testimonialsData, ...testimonialsData, ...testimonialsData];
 
   const handleLanguageChange = (e) => {
     changeLanguage(e.target.value);
@@ -342,33 +339,67 @@ export function Feedback() {
 
           @keyframes marquee {
             0% { transform: translateX(0%); }
-            100% { transform: translateX(-33.333%); }
+            100% { transform: translateX(-66.666%); }
           }
 
           .animate-marquee {
-            animation: marquee 50s linear infinite;
+            animation: marquee 30s linear infinite;
           }
 
           .marquee-container:hover .animate-marquee {
             animation-play-state: paused;
           }
 
+          /* Адаптивность для мобильных устройств (менее 768px) */
           @media (max-width: 767px) {
-            .marquee-container {
-              flex-wrap: wrap;
-              overflow-x: hidden;
-              justify-content: center;
-              mask-image: none;
-              -webkit-mask-image: none;
+            .testimonial-section-wrapper {
+              /* На мобильных устройствах маска может быть менее выражена или отключена,
+                 но для непрерывной прокрутки все же лучше ее оставить,
+                 или настроить под более плотный контент */
+              mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+              -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             }
+
+            .marquee-container {
+              flex-wrap: nowrap; /* Отключаем перенос строк, чтобы маркиза работала */
+              overflow-x: auto; /* Позволяем прокрутку вручную, если автопрокрутка остановится */
+              justify-content: flex-start; /* Начинаем элементы слева */
+              padding-left: 1rem; /* Небольшой отступ слева */
+              padding-right: 1rem; /* Небольшой отступ справа */
+              scrollbar-width: none; /* Для Firefox */
+              -ms-overflow-style: none; /* Для IE/Edge */
+            }
+            .marquee-container::-webkit-scrollbar {
+              display: none; /* Для Chrome, Safari, Opera */
+            }
+
             .animate-marquee {
-              animation: none;
+              animation: marquee-mobile 20s linear infinite; /* Новая анимация для мобильных, быстрее */
+            }
+
+            @keyframes marquee-mobile {
+              0% { transform: translateX(0%); }
+              /* Прокручиваем 2 полных набора карточек для плавности */
+              100% { transform: translateX(-66.666%); } /* Оставляем тот же процент, но скорость будет другой */
+            }
+
+            .testimonial-card-responsive {
+              width: 260px; /* Уменьшаем ширину карточки на мобильных */
+              min-width: 260px; /* Гарантируем минимальную ширину */
+              height: 240px; /* Возможно, чуть уменьшить высоту, если нужно */
+              margin-left: 0.75rem; /* Меньший отступ между карточками */
+              margin-right: 0.75rem;
+              margin-bottom: 0; /* Убираем нижний отступ, так как теперь горизонтальный скролл */
+            }
+
+            .testimonial-quote {
+               -webkit-line-clamp: 4; /* Ограничение до 4 строк на мобильных, чтобы уместилось */
             }
           }
 
           .testimonial-quote {
             display: -webkit-box;
-            -webkit-line-clamp: 5; /* Ограничение до 5 строк */
+            -webkit-line-clamp: 5; /* Ограничение до 5 строк по умолчанию */
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -377,9 +408,6 @@ export function Feedback() {
       </style>
 
       <div className="min-h-screen bg-[--color-bg] flex flex-col items-center justify-center py-12 px-4 transition-colors duration-500 ease-in-out">
-        {/* Панель управления (язык, тема) */}
-
-
         {/* Заголовок секции */}
         <div className="relative w-full max-w-7xl flex flex-col md:flex-row items-center justify-between mb-12 mt-16 md:mt-0 px-4 md:px-0 z-10">
           <motion.div

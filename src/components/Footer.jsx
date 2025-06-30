@@ -85,7 +85,7 @@ const Footer = () => {
               ["/", "Bosh sahifa"],
               ["/courses", "Kurslar"],
               ["/about", "Biz haqimizda"],
-              ["/contact", "Aloqa"],
+              ["/contacts", "Aloqa"],
               ["/blog", "footer.blog"],
             ].map(([path, label], i) => (
               <li key={i}>

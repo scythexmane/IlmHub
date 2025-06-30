@@ -45,7 +45,7 @@
 }
 
 /* CSS Variables for Dark Theme */
-html.dark {
+.dark {
   /* Core Colors */
   --color-bg: #0c0f1a; /* Немного светлее, чем #000218, для лучшей базы зернистости */
   --color-text: #f3f4f6;

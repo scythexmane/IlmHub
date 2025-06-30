@@ -15,25 +15,16 @@ import About from "./pages/About.jsx";
 import Contacts from "./pages/ContactsPage.jsx";
 // import Blog from "./pages/Blog";
 
-const ScrollToTopOnRouteChange = () => {
+const AppLayout = () => {
   const location = useLocation();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location.pathname]);
 
-  return null;
-};
-
-const AppContent = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 text-gray-800">
-      <ScrollToTopOnRouteChange />
-
-      {/* Navigatsiya */}
+    <div className="flex flex-col min-h-screen bg-gray-50 text-gray-800 dark:bg-neutral-900 dark:text-white">
       <Header />
-
-      {/* Sahifa kontenti */}
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -41,11 +32,8 @@ const AppContent = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<Contacts />} />
           {/* <Route path="/blog" element={<Blog />} /> */}
-          {/* 404 sahifa qo‘shish mumkin keyinchalik */}
         </Routes>
       </main>
-
-      {/* Footer */}
       <Footer />
     </div>
   );
@@ -54,7 +42,7 @@ const AppContent = () => {
 const App = () => {
   return (
     <Router>
-      <AppContent />
+      <AppLayout />
     </Router>
   );
 };

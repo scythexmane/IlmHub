@@ -196,7 +196,7 @@
     "level_label": "Level",
     "age_label": "Age",
     "full_description_heading": "Full Course Description",
-    "contact_us": "Contact Us" 
+    "contact_us": "Contact Us"
   },
   "levels": {
     "beginner": "Beginner",
@@ -227,26 +227,7 @@
   "testimonial5.quote": "Good training",
   "testimonial6.name": "Sarvar M.",
   "testimonial6.quote": "Turns out, very interesting modern courses",
-  "faq": {
-    "title": "Frequently Asked Questions",
-    "subtitle": "Everything you need to know about our product and services.",
-    "faq1": {
-      "q": "How does the subscription model work?",
-      "a": "Our subscription model is designed for flexibility. You can choose a monthly or annual plan and cancel at any time without any hidden fees. Annual plans come with a significant discount."
-    },
-    "faq2": {
-      "q": "Can I integrate your product with other tools?",
-      "a": "Absolutely. We offer a robust API and native integrations with popular platforms like Slack, Google Drive, and Trello. Our goal is to seamlessly fit into your existing workflow."
-    },
-    "faq3": {
-      "q": "What kind of support do you offer?",
-      "a": "We provide 24/7 premium support through live chat and email. Our dedicated support team is always ready to help you with any questions or issues you might encounter."
-    },
-    "faq4": {
-      "q": "Is my data secure?",
-      "a": "Data security is our top priority. We use end-to-end encryption, regular security audits, and comply with all major data protection regulations, including GDPR and CCPA, to ensure your data is always safe."
-    }
-  },
+
   "hero": {
     "description": "Discover a transformative learning experience at Ilm Hub Learning Center, where innovation meets education to unlock your full potential."
   },
@@ -315,6 +296,30 @@
       "subject": "Subject of your message",
       "message": "Write your message here...",
       "send": "Send message"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to common questions about our courses and Ilmhub",
+    "courses_offered": {
+      "q": "What courses does Ilmhub offer?",
+      "a": "Ilmhub offers a wide range of courses including programming, languages, mathematics, physics, design, and more."
+    },
+    "how_to_enroll": {
+      "q": "How can I enroll in a course at Ilmhub?",
+      "a": "You can enroll online through our website by selecting a course and completing the registration form."
+    },
+    "course_duration": {
+      "q": "What is the duration of each course?",
+      "a": "Courses typically range from 1 to 6 months depending on the subject and level."
+    },
+    "requirements": {
+      "q": "Are there any prerequisites for joining Ilmhub courses?",
+      "a": "Most courses require only basic knowledge and interest in the topic. Full details are available in course descriptions."
+    },
+    "certificates": {
+      "q": "Do you offer certificates after completing the courses?",
+      "a": "Yes, all students receive official certificates upon completion of Ilmhub courses."
     }
   },
   "footer": {

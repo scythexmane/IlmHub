@@ -6,15 +6,15 @@ import { FiPlus } from "react-icons/fi";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-// Данные для FAQ
+// Массив ключей FAQ
 const faqsData = [
-  { key: "faq1" },
-  { key: "faq2" },
-  { key: "faq3" },
-  { key: "faq4" },
+  { key: "courses_offered" },
+  { key: "how_to_enroll" },
+  { key: "course_duration" },
+  { key: "requirements" },
+  { key: "certificates" },
 ];
 
-// --- Дочерний Компонент Аккордеона ---
 const AccordionItem = ({ faq, isOpen, onClick }) => {
   const { t } = useTranslation();
 
@@ -42,7 +42,7 @@ const AccordionItem = ({ faq, isOpen, onClick }) => {
           <FiPlus />
         </motion.div>
       </motion.button>
-      
+
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
@@ -64,8 +64,6 @@ const AccordionItem = ({ faq, isOpen, onClick }) => {
   );
 };
 
-
-// --- Основной Компонент Секции FAQ ---
 const FAQSection = () => {
   const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState(null);
@@ -85,7 +83,6 @@ const FAQSection = () => {
   return (
     <section className="bg-bg py-20 sm:py-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div className="text-center mb-12" data-aos="fade-down">
           <h2 className="text-4xl sm:text-5xl font-bold text-text tracking-tight">
             {t("faq.title")}
@@ -108,7 +105,6 @@ const FAQSection = () => {
             />
           ))}
         </motion.div>
-
       </div>
     </section>
   );

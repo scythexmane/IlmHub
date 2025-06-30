@@ -77,7 +77,6 @@ const Header = () => {
     { name: t("Kurslar"), path: "/courses" },
     { name: t("Biz haqimizda"), path: "/about" },
     { name: t("Aloqa"), path: "/contacts" },
-    { name: t("Blog"), path: "/blog" },
   ];
 
   const menuVariants = {
@@ -147,7 +146,7 @@ const Header = () => {
             whileTap={{ scale: 0.97 }}
           >
             <Phone size={20} style={{ color: 'var(--color-primary)' }} />
-            <span>+998 90 123 45 67</span>
+            <span> +998 93 886 98 98</span>
           </motion.a>
         </div>
 

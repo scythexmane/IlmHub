@@ -15,26 +15,6 @@
   "comments": {
     "title": "Biz haqimizda fikrlar"
   },
-  "faq": {
-    "title": "Sizning savollaringizga javoblar",
-    "subtitle": "Platformamiz haqidagi eng keng tarqalgan savollarni to'pladik. Agar bu yerda o'z savolingizga javob topa olmasangiz, bizning qo'llab-quvvatlash jamoamizga murojaat qiling.",
-    "faq1": {
-      "q": "Obuna modeli qanday ishlaydi?",
-      "a": "Bizning obuna modelimiz moslashuvchanlik uchun mo'ljallangan. Siz oylik yoki yillik rejani tanlashingiz va istalgan vaqtda yashirin to'lovlarsiz bekor qilishingiz mumkin. Yillik rejalar sezilarli chegirmaga ega."
-    },
-    "faq2": {
-      "q": "Mahsulotingizni boshqa vositalar bilan integratsiya qila olamanmi?",
-      "a": "Albatta. Biz Slack, Google Drive va Trello kabi mashhur platformalar bilan kuchli API va mahalliy integratsiyalarni taklif qilamiz. Maqsadimiz — sizning mavjud ish jarayoningizga muammosiz moslashish."
-    },
-    "faq3": {
-      "q": "Siz qanday turdagi yordamni taklif qilasiz?",
-      "a": "Biz jonli chat va elektron pochta orqali 24/7 premium qo'llab-quvvatlashni ta'minlaymiz. Bizning maxsus qo'llab-quvvatlash jamoamiz har doim siz duch keladigan har qanday savol yoki muammolar bo'yicha yordam berishga tayyor."
-    },
-    "faq4": {
-      "q": "Mening ma'lumotlarim xavfsizmi?",
-      "a": "Ma'lumotlar xavfsizligi bizning ustuvor vazifamizdir. Ma'lumotlaringiz doimo xavfsiz bo'lishini ta'minlash uchun biz to'liq shifrlash, muntazam xavfsizlik tekshiruvlaridan foydalanamiz va GDPR va CCPA kabi barcha asosiy ma'lumotlarni himoya qilish qoidalariga rioya qilamiz."
-    }
-  },
   "Наши достижения": "Bizning yutuqlarimiz",
   "Цифры, которые говорят сами за себя": "O'z-o'zidan so'zlaydigan raqamlar",
   "Главные показатели": "Asosiy ko'rsatkichlar",
@@ -308,6 +288,30 @@
       "subject": "Xabaringiz mavzusi",
       "message": "Xabaringizni shu yerga yozing...",
       "send": "Xabar yuborish"
+    }
+  },
+  "faq": {
+    "title": "Ko‘p so‘raladigan savollar",
+    "subtitle": "Ilmhub kurslari bo‘yicha eng ko‘p beriladigan savollar va javoblar",
+    "courses_offered": {
+      "q": "Ilmhub qanday kurslarni taklif qiladi?",
+      "a": "Ilmhub dasturlash, tillar, matematika, fizika, dizayn va boshqa ko‘plab yo‘nalishlarda kurslarni taklif qiladi."
+    },
+    "how_to_enroll": {
+      "q": "Ilmhub kurslariga qanday yozilaman?",
+      "a": "Kurs tanlab, ro‘yxatdan o‘tish formasini to‘ldirib, veb-saytimiz orqali onlayn yozilishingiz mumkin."
+    },
+    "course_duration": {
+      "q": "Har bir kurs qancha davom etadi?",
+      "a": "Kurslar mavzusi va darajasiga qarab 1 oydan 6 oygacha davom etadi."
+    },
+    "requirements": {
+      "q": "Ilmhub kurslariga kirish uchun qandaydir talablar bormi?",
+      "a": "Ko‘pchilik kurslar uchun faqat mavzuga qiziqish va asosiy bilimlar yetarli. Batafsil ma’lumot kurs tavsifida keltirilgan."
+    },
+    "certificates": {
+      "q": "Kurs tugagach sertifikat berasizlarmi?",
+      "a": "Ha, barcha bitiruvchilarga Ilmhub tomonidan rasmiy sertifikatlar beriladi."
     }
   },
   "footer": {

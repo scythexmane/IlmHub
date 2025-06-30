@@ -12,7 +12,7 @@ import {
   Info,
   PhoneCall,
 } from "lucide-react";
-
+import '../index.css';
 const backdropVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import StatsSection from "../components/StatsSection";
 import { Feedback } from "../components/Feedback"; // <-- Changed this line
 import FAQSection from "../components/FAQ";
-
+import '../index.css';
 const Home = () => {
   const { t } = useTranslation();
 

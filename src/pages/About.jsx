@@ -16,7 +16,7 @@ import {
 import { ThemeContext } from "../ThemeContext";
 import { useTranslation } from "react-i18next";
 import HeroPng from "../assets/aboutHero.png";
-
+import '../index.css';
 // --- Animation Variants for Individual Elements ---
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },

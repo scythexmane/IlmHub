@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-
+import '../index.css';
 // Importing Lucide-react icons
 import {
   Code,

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { MailPlus, Send } from "lucide-react";
 import { useTranslation } from "react-i18next";
-
+import '../index.css';
 import contactsvg from "../assets/contactsvg.svg";
 import { ThemeContext } from "../ThemeContext";
 

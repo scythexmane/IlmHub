@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../ThemeContext';
-
+import '../index.css';
 // Lucide Icons
 import { Phone, Send, Sun, Moon, Menu, X, BookOpenText, Globe } from 'lucide-react';
 

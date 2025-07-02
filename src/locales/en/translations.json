@@ -288,15 +288,14 @@
     }
   },
   "contact": {
-    "title": "Let's connect, let's create!",
-    "description": "Have a project idea, question, or just want to say hi? Drop us a message below. We’re always excited to hear from you and explore new possibilities.",
-    "form": {
-      "name": "Your full name",
-      "email": "Your email address",
-      "subject": "Subject of your message",
-      "message": "Write your message here...",
-      "send": "Send message"
-    }
+    "title": "Contact",
+    "lead": "Interested in a joint project?",
+    "desc": "Write to me directly or call me – I look forward to exciting ideas!",
+    "fullName": "Full Name",
+    "phone": "Phone Number",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Message successfully sent!"
   },
   "faq": {
     "title": "Frequently Asked Questions",

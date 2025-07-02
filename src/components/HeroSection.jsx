@@ -1,49 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { ThemeContext } from "../ThemeContext";
 
 const HeroSection = () => {
   const { t } = useTranslation();
-
-  const imageContentId =
-    "https://static.vecteezy.com/system/resources/previews/010/873/197/original/3d-male-graphic-designer-working-on-laptop-png.png";
+  const { isDarkMode } = useContext(ThemeContext);
 
   return (
     <section
-      className="relative z-10 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 py-24 lg:py-40 flex flex-col-reverse lg:flex-row items-center justify-between overflow-hidden bg-[var(--color-bg)] text-[var(--color-text)]"
+      className={`relative z-10 overflow-hidden px-6 sm:px-12 lg:px-24 pt-32 pb-24 min-h-[100vh] transition-colors duration-500 ${
+        isDarkMode ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
+      }`}
     >
-      {/* Блоб-анимации */}
-      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
-        <div className="absolute top-[-5%] left-[-10%] w-60 h-60 bg-[var(--color-primary)] rounded-full mix-blend-multiply filter blur-2xl animate-float-blob" />
-        <div className="absolute top-[10%] right-[-5%] w-80 h-80 bg-[var(--color-secondary)] rounded-full mix-blend-multiply filter blur-2xl opacity-25 animate-float-blob animation-delay-3000" />
-        <div className="absolute bottom-[5%] left-[30%] w-72 h-72 bg-[var(--color-accent)] rounded-full mix-blend-multiply filter blur-2xl opacity-25 animate-float-blob animation-delay-6000" />
+      {/* Звёздный фон */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="night w-full h-full absolute inset-0">
+          {Array.from({ length: 40 }).map((_, i) => (
+            <div key={i} className="shooting_star" />
+          ))}
+        </div>
       </div>
 
       {/* Контент */}
-      <div className="relative z-10 flex flex-col gap-6 max-w-2xl text-center lg:text-left">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-4xl mx-auto space-y-10">
         <motion.h1
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-br from-blue-500 via-green-500 to-indigo-500 dark:from-blue-400 dark:via-green-400 dark:to-indigo-400"
         >
-          Ilm Hub —{" "}
-          <span className="text-[var(--color-primary)]">
-            {t("Zamonaviy")}
-          </span>{" "}
-          {" "}
-          <span className="text-[var(--color-secondary)]">
-            {t("Interaktiv")}
-          </span>{" "}
-          {t("Ta'lim markazi")}
+          Ilm Hub <br />{t("Zamonaviy")} {t("Interaktiv")} {t("Ta'lim markazi")}
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-base sm:text-lg md:text-xl text-[var(--color-muted)]"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-lg sm:text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-600"
         >
           {t(
             "Eng so‘nggi texnologiyalar asosida darslar, tajribali o‘qituvchilar va kuchli natijalar. Siz ham o‘z sohangizning mutaxassisi bo‘ling!"
@@ -53,59 +48,84 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
         >
           <Link
             to="/courses"
-            className="inline-block px-8 py-3 rounded-full bg-[var(--color-primary)] hover:bg-opacity-80 text-white font-semibold text-base sm:text-lg shadow-xl transition duration-300 backdrop-blur-md"
+            className="inline-block px-8 py-3 font-semibold rounded-full shadow-lg transition-all duration-300 bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
           >
             {t("Kurslarni ko‘rish")}
           </Link>
         </motion.div>
       </div>
 
-      {/* Изображение */}
-      <motion.div
-        initial={{ opacity: 0, x: 60 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.8, duration: 1 }}
-        className="relative z-10 w-full max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mb-12 lg:mb-0 flex justify-center"
-      >
-        <img
-          src={imageContentId}
-          alt={t("Изображение Ilm Hub")}
-          className="w-full object-contain drop-shadow-2xl"
-        />
-
-        {/* Доп. декоративные эффекты */}
-        <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-[var(--color-secondary)] rounded-full mix-blend-multiply filter blur-2xl opacity-20" />
-        <div className="absolute -top-6 -left-6 w-36 h-36 bg-[var(--color-primary)] rounded-full mix-blend-multiply filter blur-2xl opacity-20" />
-      </motion.div>
-
-      {/* Blob анимация keyframes */}
+      {/* Стили анимации звёзд */}
       <style>{`
-        @keyframes float-blob {
-          0%, 100% {
-            transform: translate(0, 0) scale(1);
-          }
-          25% {
-            transform: translate(15px, -10px) scale(1.05);
-          }
-          50% {
-            transform: translate(-20px, 10px) scale(0.95);
-          }
-          75% {
-            transform: translate(10px, 20px) scale(1.03);
-          }
+        .night {
+          position: relative;
+          transform: rotateZ(45deg);
         }
-        .animate-float-blob {
-          animation: float-blob 18s ease-in-out infinite;
+
+        .shooting_star {
+          position: absolute;
+          height: 2px;
+          width: 100px;
+          background: linear-gradient(-45deg, rgba(95, 145, 255, 1), rgba(0, 0, 255, 0));
+          border-radius: 999px;
+          filter: drop-shadow(0 0 6px rgba(105, 155, 255, 1));
+          animation:
+            tail 3000ms ease-in-out infinite,
+            shooting 3000ms ease-in-out infinite;
         }
-        .animation-delay-3000 {
-          animation-delay: 3s;
+
+        .shooting_star::before,
+        .shooting_star::after {
+          content: '';
+          position: absolute;
+          top: calc(50% - 1px);
+          right: 0;
+          height: 2px;
+          background: linear-gradient(-45deg, rgba(0, 0, 255, 0), rgba(95, 145, 255, 1), rgba(0, 0, 255, 0));
+          transform: translateX(50%) rotateZ(45deg);
+          border-radius: 100%;
+          animation: shining 3000ms ease-in-out infinite;
         }
-        .animation-delay-6000 {
-          animation-delay: 6s;
+
+        .shooting_star::after {
+          transform: translateX(50%) rotateZ(-45deg);
+        }
+
+        /* Случайные позиции звёзд */
+        ${Array.from({ length: 40 })
+          .map((_, i) => {
+            const top = Math.floor(Math.random() * 95) + 2;
+            const left = Math.floor(Math.random() * 95) + 2;
+            const delay = Math.floor(Math.random() * 7000);
+            return `
+              .shooting_star:nth-child(${i + 1}) {
+                top: ${top}%;
+                left: ${left}%;
+                animation-delay: ${delay}ms;
+              }
+            `;
+          })
+          .join("")}
+
+        @keyframes tail {
+          0% { width: 0; }
+          30% { width: 100px; }
+          100% { width: 0; }
+        }
+
+        @keyframes shining {
+          0% { width: 0; }
+          50% { width: 30px; }
+          100% { width: 0; }
+        }
+
+        @keyframes shooting {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(300px); }
         }
       `}</style>
     </section>

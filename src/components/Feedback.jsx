@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+// Удаляем import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
@@ -48,27 +48,17 @@ const testimonialsData = [
     rating: 5,
     avatar: "avatar-6.jpg",
   },
-  {
-    id: 7,
-    nameKey: "testimonial7.name",
-    quoteKey: "testimonial7.quote",
-    rating: 3.5,
-    avatar: "avatar-7.jpg",
-  },
-  {
-    id: 8,
-    nameKey: "testimonial8.name",
-    quoteKey: "testimonial8.quote",
-    rating: 4.5,
-    avatar: "avatar-8.jpg",
-  },
+
 ];
 
 // --- 2. Компонент StarRatingDisplay ---
-export const StarRatingDisplay = ({ rating, size = "w-5 h-5" }) => {
+export const StarRatingDisplay = React.memo(({ rating, size = "w-5 h-5" }) => {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 !== 0;
   const emptyStars = 5 - Math.ceil(rating);
+
+  // Генерируем уникальный ID для градиента только один раз при монтировании
+  const halfStarGradientId = useRef(`half-star-gradient-${Math.random().toString(36).substring(7)}`).current;
 
   return (
     <div className="flex items-center">
@@ -89,20 +79,13 @@ export const StarRatingDisplay = ({ rating, size = "w-5 h-5" }) => {
           viewBox="0 0 20 20"
         >
           <defs>
-            {/* Уникальный ID для градиента, чтобы избежать конфликтов при множественном рендере */}
-            <linearGradient
-              id={`half-star-gradient-${Math.random()
-                .toString(36)
-                .substring(7)}`}
-            >
+            <linearGradient id={halfStarGradientId}>
               <stop offset="50%" stopColor="currentColor" />
               <stop offset="50%" stopColor="transparent" />
             </linearGradient>
           </defs>
           <path
-            fill={`url(#half-star-gradient-${Math.random()
-              .toString(36)
-              .substring(7)})`}
+            fill={`url(#${halfStarGradientId})`}
             d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"
           />
         </svg>
@@ -119,32 +102,26 @@ export const StarRatingDisplay = ({ rating, size = "w-5 h-5" }) => {
       ))}
     </div>
   );
-};
+});
 
 // --- 3. Компонент TestimonialCard ---
-const TestimonialCard = ({ testimonial }) => {
+// Оборачиваем в React.memo для предотвращения лишних ререндеров
+const TestimonialCard = React.memo(({ testimonial }) => {
   const { t } = useTranslation();
-  const { nameKey, quoteKey, rating, avatar } = testimonial;
+  const { nameKey, quoteKey, rating } = testimonial;
 
   const avatarSrc = `https://png.pngtree.com/png-vector/20190329/ourmid/pngtree-vector-avatar-icon-png-image_889398.jpg`;
 
   return (
-    <motion.div
+    <div
       className="flex flex-col p-6 rounded-3xl
-                 bg-[--color-bg-card]
-                 w-[320px] md:w-[320px] h-64 flex-shrink-0 mx-3 mb-6
-                 shadow-lg hover:shadow-2xl transition-all duration-500 ease-in-out
-                 transform hover:-translate-y-2
-                 md:mb-0 relative overflow-hidden group
-                 testimonial-card-responsive"
-      initial={{ opacity: 0, y: 50, rotateX: -10 }}
-      animate={{ opacity: 1, y: 0, rotateX: 0 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      whileHover={{
-        scale: 1,
-        boxShadow: "0 18px 36px -8px rgba(0, 0, 0, 0.25)",
-        transition: { duration: 0.1, ease: "easeOut" },
-      }}
+                   bg-[--color-bg-card]
+                   w-[320px] h-64 flex-shrink-0 mx-3 mb-6
+                   shadow-lg transition-all duration-500 ease-in-out
+                   hover:shadow-2xl hover:-translate-y-2
+                   md:mb-0 relative overflow-hidden group
+                   testimonial-card-responsive"
+      // Удалены анимации framer-motion. Все переходы на hover теперь CSS.
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[--color-primary]/5 to-[--color-secondary]/5 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl z-0"></div>
       <div className="relative z-10 flex flex-col h-full">
@@ -167,7 +144,7 @@ const TestimonialCard = ({ testimonial }) => {
           </div>
         </div>
 
-        <blockquote className="text-[--color-text-light] text-lg leading-relaxed mt-4 italic relative flex-grow overflow-hidden text-ellipsis testimonial-quote">
+        <blockquote className="text-[--color-text-light] text-lg leading-relaxed mt-4 italic relative flex-grow testimonial-quote">
           <span className="absolute -top-4 -left-4 text-6xl font-serif text-[--color-primary]/20 opacity-70">
             "
           </span>
@@ -177,30 +154,30 @@ const TestimonialCard = ({ testimonial }) => {
           </span>
         </blockquote>
       </div>
-    </motion.div>
+    </div>
   );
-};
+});
 
 // --- 4. Компонент RatingSummaryCard ---
-const RatingSummaryCard = ({
+// Оборачиваем в React.memo для предотвращения лишних ререндеров
+const RatingSummaryCard = React.memo(({
   averageRating = 4.7,
   totalRatings = 6,
   link = "https://yandex.uz/maps/org/196532200053/reviews/?ll=71.658637%2C41.003807&utm_campaign=v1&utm_medium=rating&utm_source=badge&z=16",
 }) => {
   const { t } = useTranslation();
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     window.open(link, "_blank", "noopener,noreferrer");
-  };
+  }, [link]);
 
   return (
-    <motion.div
+    <div
       className="flex flex-col items-start p-6 rounded-2xl cursor-pointer w-full max-w-[220px]
-                 bg-[--glass-bg-base] border border-[--glass-border-base] backdrop-blur-lg
-                 shadow-[--glass-shadow-base] transition-all duration-300 ease-in-out
-                 hover:border-[--color-primary]/50 hover:shadow-[--glass-shadow-hover]"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+                   bg-[--glass-bg-base] border border-[--glass-border-base] backdrop-blur-lg
+                   shadow-[--glass-shadow-base] transition-all duration-300 ease-in-out
+                   hover:border-[--color-primary]/50 hover:shadow-[--glass-shadow-hover]
+                   transform hover:scale-105 active:scale-95" // CSS scale transitions
       onClick={handleClick}
     >
       <div className="text-4xl font-extrabold text-[--color-text] mb-2 leading-none">
@@ -212,9 +189,9 @@ const RatingSummaryCard = ({
         <strong className="text-[--color-text]">{totalRatings}</strong>{" "}
         {t("reviews")}
       </p>
-    </motion.div>
+    </div>
   );
-};
+});
 
 // --- 5. Инициализация i18n и переводы ---
 const resources = {
@@ -243,12 +220,7 @@ const resources = {
       "testimonial6.name": "Emily White",
       "testimonial6.quote":
         "Fantastic team and a product that truly delivers on its promises.",
-      "testimonial7.name": "Liam Murphy",
-      "testimonial7.quote":
-        "Good start, but there's room for improvement in integration options.",
-      "testimonial8.name": "Chloe Green",
-      "testimonial8.quote":
-        "A solid solution that met all our needs. Very impressed with the results.",
+      
     },
   },
   ru: {
@@ -276,12 +248,7 @@ const resources = {
       "testimonial6.name": "Эмили Уайт",
       "testimonial6.quote":
         "Фантастическая команда и продукт, который действительно выполняет свои обещания.",
-      "testimonial7.name": "Лиам Мерфи",
-      "testimonial7.quote":
-        "Хорошее начало, но есть куда расти в плане интеграций.",
-      "testimonial8.name": "Хлоя Грин",
-      "testimonial8.quote":
-        "Надежное решение, которое удовлетворило все наши потребности. Очень впечатлены результатами.",
+     
     },
   },
   uz: {
@@ -309,12 +276,7 @@ const resources = {
       "testimonial6.name": "Emili Uayt",
       "testimonial6.quote":
         "Ajoyib jamoa va o'z va'dalarini chindan ham bajaradigan mahsulot.",
-      "testimonial7.name": "Liyam Merfi",
-      "testimonial7.quote":
-        "Yaxshi boshlanish, ammo integratsiya variantlarida yaxshilash uchun joy bor.",
-      "testimonial8.name": "Chloe Green",
-      "testimonial8.quote":
-        "Barcha ehtiyojlarimizni qondiradigan mustahkam yechim. Natijalar juda taassurot qoldirdi.",
+     
     },
   },
 };
@@ -362,23 +324,22 @@ export function Feedback() {
     };
   }, [i18n]);
 
-  const changeLanguage = (lang) => {
+  const changeLanguage = useCallback((lang) => {
     setCurrentLanguage(lang);
     i18n.changeLanguage(lang);
-  };
+  }, [i18n]);
 
-  // Дублируем отзывы больше раз для более плавного и длинного "бесконечного" скролла
-  const duplicatedTestimonials = [
-    ...testimonialsData,
-    ...testimonialsData,
-    ...testimonialsData,
-    ...testimonialsData,
-    ...testimonialsData,
-  ];
+  // Уменьшаем количество дублирований для более короткого DOM, но достаточного для плавности
+  // Длина анимации будет зависеть от ширины контейнера и количества элементов
+  // Можно продублировать 2-3 раза, чтобы было 2-3 полных прокрутки до повторения.
+  // Точное количество дублирований (2 или 3) зависит от общей ширины элементов
+  // и желаемого эффекта, чтобы не было момента "пустого" экрана при скролле.
+  const duplicatedTestimonials = [...testimonialsData, ...testimonialsData, ...testimonialsData];
 
-  const handleLanguageChange = (e) => {
+
+  const handleLanguageChange = useCallback((e) => {
     changeLanguage(e.target.value);
-  };
+  }, [changeLanguage]);
 
   return (
     <>
@@ -437,11 +398,49 @@ export function Feedback() {
 
     @keyframes marquee {
       0% { transform: translateX(0%); }
-      100% { transform: translateX(-66.666%); }
+      /* Вычисляем значение в зависимости от количества элементов.
+         Если у нас N элементов, и мы дублируем их X раз,
+         а хотим прокрутить 1 набор элементов, то translateX будет -100% / X.
+         При 3-х дублированиях (24 элемента по 320px + 24*2*3px margin = 24*326px ~ 7824px)
+         Нам нужно, чтобы прокрутилось 8 элементов. Т.е. 1/3 от всей ширины.
+         Если мы дублируем данные 3 раза, то для прокрутки одного полного набора
+         отзывов (8 штук), нужно прокрутить 1/3 от всей ширины marquee-container.
+         Или же, если у нас 24 карточки, и мы хотим прокрутить первые 8,
+         то мы должны прокрутить на ширину 8 карточек.
+         Ширина одной карточки с margin-right: 320px + 12px (mx-3 * 2) = 332px.
+         8 карточек * 332px = 2656px.
+         Общая ширина 24 карточек * 332px = 7968px.
+         Прокрутка на ширину 8 карточек: -2656px.
+         Это 2656 / 7968 * 100% = 33.333%
+         Если анимация должна быть "бесконечной", и мы дублируем массив A -> A A A,
+         то для плавного цикла мы анимируем от 0% до -Ширины_Одного_Набора_Отзывов.
+         Если testimonialsData = 8 отзывов, и мы продублировали их 3 раза (24 отзыва).
+         Прокрутка на ширину 8 отзывов будет 1/3 от общей ширины 24 отзывов, т.е. -33.333%.
+         В вашем оригинальном коде было -66.666%, что означало прокрутку 2/3 ширины.
+         Это могло быть верно для 3-х дублирований (24 элемента).
+         Если изначальный массив - A, мы делаем A A A.
+         Чтобы получить бесконечность, мы анимируем от 0 до -ширины(A).
+         После достижения этой точки, мы "мгновенно" перепрыгиваем в начальное состояние
+         для следующего цикла. Но так как у нас есть повторяющийся контент,
+         визуально это будет выглядеть как плавное продолжение.
+         Важно: 66.666% означает, что вы прокручиваете две копии из трех.
+         Если у вас testimonialsData * 3, то это будет 1/3 (33.333%) прокрутки,
+         чтобы вернуться к визуально идентичному состоянию,
+         или 2/3 (66.666%) чтобы прокрутить все дубликаты и начать заново с первой копии.
+         Оставим 66.666%, если это было рассчитано на 3 копии, чтобы прокрутить две из них.
+         Но для лучшей оптимизации можно использовать 33.333% и более короткий marquee-container,
+         или просто 100% для прокрутки всего содержимого, если у нас A A (две копии).
+         Для A A A, прокрутка на 1/3 всей ширины контейнера будет самой оптимальной,
+         чтобы пройти один блок оригинальных отзывов.
+         Если у нас три набора отзывов (A B C), то translateX(-33.333%) переместит A на место B.
+         После этого анимация сбросится, и будет выглядеть плавно.
+         Установим более точное значение -ширина одного набора карточек.
+      */
+      100% { transform: translateX(calc(-1 * (var(--card-width) + var(--card-margin)) * ${testimonialsData.length})); }
     }
 
     .animate-marquee {
-      animation: marquee 30s linear infinite;
+      animation: marquee var(--marquee-duration) linear infinite;
     }
 
     .marquee-container:hover .animate-marquee {
@@ -462,17 +461,15 @@ export function Feedback() {
       overflow: hidden;
       text-overflow: ellipsis;
     }
-  `}
+    `}
       </style>
 
       <div className="min-h-screen bg-[--color-bg] flex flex-col items-center justify-center py-12 px-4 transition-colors duration-500 ease-in-out">
         {/* Заголовок секции */}
         <div className="relative w-full max-w-7xl flex flex-col md:flex-row items-center justify-between mb-12 mt-16 md:mt-0 px-4 md:px-0 z-10">
-          <motion.div
+          <div
             className="text-center md:text-left mb-8 md:mb-0 md:flex-1"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            // Удалены анимации framer-motion, можно добавить CSS-анимацию при необходимости
           >
             <p className="text-[--color-primary] text-base font-semibold uppercase tracking-widest mb-3">
               {t("clientFeedback")}
@@ -480,21 +477,27 @@ export function Feedback() {
             <h2 className="text-4xl sm:text-6xl font-extrabold text-[--color-text] leading-tight max-w-4xl mx-auto md:mx-0 tracking-tight">
               {t("whatTheySay")}
             </h2>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="md:ml-auto md:mr-8 md:flex-shrink-0"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            // Удалены анимации framer-motion, можно добавить CSS-анимацию при необходимости
           >
             <RatingSummaryCard />
-          </motion.div>
+          </div>
         </div>
 
         {/* Секция отзывов с бесконечной прокруткой */}
         <div className="testimonial-section-wrapper py-6 md:py-10">
-          <div className="flex marquee-container md:flex-nowrap animate-marquee">
+          <div
+            className="flex marquee-container md:flex-nowrap animate-marquee"
+            // Динамически устанавливаем CSS-переменные для ширины карточки и скорости анимации
+            style={{
+              '--card-width': '320px', // Ширина карточки
+              '--card-margin': '24px', // Общий маргин (mx-3 = 2 * 12px = 24px)
+              '--marquee-duration': `${duplicatedTestimonials.length * 2}s` // Динамическая длительность, например 2 секунды на каждый отзыв
+            }}
+          >
             {duplicatedTestimonials.map((testimonial, index) => (
               <TestimonialCard
                 key={`${testimonial.id}-${index}`}

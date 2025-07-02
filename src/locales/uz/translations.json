@@ -40,28 +40,37 @@
     "teachers": "O‘qituvchilar",
     "certificates": "Sertifikatlar"
   },
-   "translation": {
-      "galleryTitle": "Media Galereyasi",
-      "closeModal": "Media korish oynasini yopish",
-      "previousMedia": "Oldingi media",
-      "nextMedia": "Keyingi media",
-      "img1Title": "Innovatsion Talim Muhiti",
-      "img1Description": "Interaktiv talim uchun moljallangan zamonaviy sinflarimizga nazar.",
-      "vid2Title": "Texnologiya Innovatsiyalari Markazi",
-      "vid2Description": "Bizning eng zamonaviy innovatsion laboratoriyamizdagi songgi loyihalarni namoyish etish.",
-      "img3Title": "Talabalar Laboratoriya Mashgulotlari",
-      "img3Description": "Talabalar zamonaviy laboratoriyalarimizda amaliy tajribalar bilan shugullanishmoqda.",
-      "vid4Title": "Kampus Hayoti Yangiliklari",
-      "vid4Description": "Bizning jonli kampusimizdagi kundalik hayot va voqealarning dinamik montaji.",
-      "img5Title": "Ilgor Tadqiqot Loyihasi",
-      "img5Description": "Professor-oqituvchilarimiz va talabalarimiz kashfiyotchi tadqiqotlar ustida hamkorlik qilmoqda.",
-      "img6Title": "Bitiruv Kuni Bayrami",
-      "img6Description": "Yaqinda bolib otgan bitiruv marosimimizdan quvonchli lahzalar, muvaffaqiyatni nishonlash.",
-      "vid7Title": "Bitiruvchilar Bilan Uchrashuv",
-      "vid7Description": "Otmish va hozirni boglash: muvaffaqiyatli kasbiy tarmoq kechasi.",
-      "img8Title": "Zamonaviy Kutubxona Makonlari",
-      "img8Description": "Bizning ulkan kutubxonamiz oqish va hamkorlik uchun tinch va ilhomlantiruvchi muhitni taklif etadi."
-    },
+  "contact": {
+    "title": "Biz bilan bog'lanish",
+    "name": "Ism",
+    "phone": "Telefon",
+    "message": "Xabar",
+    "send": "Yuborish"
+  },
+  "aboutHero.title": "Bilim sari yo‘l boshlang!",
+  "aboutHero.brand": "Ilm Hub",
+  "translation": {
+    "galleryTitle": "Media Galereyasi",
+    "closeModal": "Media korish oynasini yopish",
+    "previousMedia": "Oldingi media",
+    "nextMedia": "Keyingi media",
+    "img1Title": "Innovatsion Talim Muhiti",
+    "img1Description": "Interaktiv talim uchun moljallangan zamonaviy sinflarimizga nazar.",
+    "vid2Title": "Texnologiya Innovatsiyalari Markazi",
+    "vid2Description": "Bizning eng zamonaviy innovatsion laboratoriyamizdagi songgi loyihalarni namoyish etish.",
+    "img3Title": "Talabalar Laboratoriya Mashgulotlari",
+    "img3Description": "Talabalar zamonaviy laboratoriyalarimizda amaliy tajribalar bilan shugullanishmoqda.",
+    "vid4Title": "Kampus Hayoti Yangiliklari",
+    "vid4Description": "Bizning jonli kampusimizdagi kundalik hayot va voqealarning dinamik montaji.",
+    "img5Title": "Ilgor Tadqiqot Loyihasi",
+    "img5Description": "Professor-oqituvchilarimiz va talabalarimiz kashfiyotchi tadqiqotlar ustida hamkorlik qilmoqda.",
+    "img6Title": "Bitiruv Kuni Bayrami",
+    "img6Description": "Yaqinda bolib otgan bitiruv marosimimizdan quvonchli lahzalar, muvaffaqiyatni nishonlash.",
+    "vid7Title": "Bitiruvchilar Bilan Uchrashuv",
+    "vid7Description": "Otmish va hozirni boglash: muvaffaqiyatli kasbiy tarmoq kechasi.",
+    "img8Title": "Zamonaviy Kutubxona Makonlari",
+    "img8Description": "Bizning ulkan kutubxonamiz oqish va hamkorlik uchun tinch va ilhomlantiruvchi muhitni taklif etadi."
+  },
   "clientFeedback": "Mijozlarning fikr-mulohazalari",
   "whatTheySay": "Mahsulotimizdan foydalangandan so'ng ular nima deydi",
   "viewAll": "Hammasini ko'rish",
@@ -303,17 +312,7 @@
       "learnMore": "Ko'proq bilib oling"
     }
   },
-  "contact": {
-    "title": "Keling, bog'lanaylik, ijod qilaylik!",
-    "description": "Loyiha g'oyasi, savol yoki shunchaki salom aytmoqchimisiz? Quyida bizga xabar yuboring. Biz har doim sizdan xabar olishdan va yangi imkoniyatlarni kashf qilishdan xursandmiz.",
-    "form": {
-      "name": "To'liq ismingiz",
-      "email": "Elektron pochta manzilingiz",
-      "subject": "Xabaringiz mavzusi",
-      "message": "Xabaringizni shu yerga yozing...",
-      "send": "Xabar yuborish"
-    }
-  },
+
   "faq": {
     "title": "Ko‘p so‘raladigan savollar",
     "subtitle": "Ilmhub kurslari bo‘yicha eng ko‘p beriladigan savollar va javoblar",

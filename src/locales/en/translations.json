@@ -288,15 +288,14 @@
     }
   },
   "contact": {
-    "title": "Contact",
-    "lead": "Interested in a joint project?",
-    "desc": "Write to me directly or call me – I look forward to exciting ideas!",
-    "fullName": "Full Name",
-    "phone": "Phone Number",
+    "title": "Contact Us",
+    "name": "Name",
+    "phone": "Phone",
     "message": "Message",
-    "send": "Send Message",
-    "success": "Message successfully sent!"
+    "send": "Send"
   },
+  "aboutHero.title": "Start your journey with",
+  "aboutHero.brand": "Ilm Hub",
   "faq": {
     "title": "Frequently Asked Questions",
     "subtitle": "Answers to common questions about our courses and Ilmhub",

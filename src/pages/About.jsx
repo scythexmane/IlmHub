@@ -21,65 +21,15 @@ import { Link } from "react-router-dom";
 // --- Hero Section ---
 import { motion } from "framer-motion";
 
+import  AboutHero from "./AboutHero";
+
 const HeroSection = () => {
-  const { t } = useTranslation();
-  const { isDarkMode } = useContext(ThemeContext);
-
   return (
-    <section
-      className={`relative z-10 px-6 sm:px-12 lg:px-24 pt-28 pb-20 min-h-screen transition-colors duration-500 flex flex-col items-center justify-center text-center ${
-        isDarkMode ? "bg-[#030b1a] text-white" : "bg-[#e5f1fa] text-gray-900"
-      }`}
-    >
-      {/* 🌈 Яркий градиентный фон */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Центральное свечение */}
-        <div
-          className="absolute w-[1200px] h-[1200px] top-[-300px] left-1/2 transform -translate-x-1/2 rounded-full opacity-60 blur-3xl"
-          style={{
-            background: isDarkMode
-              ? "radial-gradient(circle, rgba(14,165,233,0.6), rgba(30,41,59,0.8))"
-              : "radial-gradient(circle, rgba(56,189,248,0.5), rgba(147,197,253,0.3))",
-          }}
-        />
-
-        {/* Нижнее/боковое свечение */}
-        <div
-          className="absolute w-[800px] h-[800px] bottom-[-200px] left-[-200px] rounded-full opacity-50 blur-2xl"
-          style={{
-            background: isDarkMode
-              ? "radial-gradient(circle, rgba(99,102,241,0.4), transparent)"
-              : "radial-gradient(circle, rgba(99,179,237,0.4), transparent)",
-          }}
-        />
-      </div>
-
-      {/* 📄 Контент */}
-      <div className="relative z-10 max-w-4xl mx-auto space-y-8 px-4">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-600 dark:from-cyan-300 dark:via-blue-400 dark:to-indigo-500">
-          Ilm Hub — {t("Zamonaviy")} {t("Interaktiv")} {t("Ta'lim markazi")}
-        </h1>
-
-        <p className="text-lg sm:text-xl md:text-2xl font-medium text-gray-700 dark:text-gray-300">
-          {t(
-            "Eng so‘nggi texnologiyalar asosida darslar, tajribali o‘qituvchilar va kuchli natijalar. Siz ham o‘z sohangizning mutaxassisi bo‘ling!"
-          )}
-        </p>
-
-        <div>
-          <Link
-            to="/courses"
-            className="inline-block px-8 py-3 font-semibold rounded-full transition-all duration-300 bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 shadow-md"
-          >
-            {t("Kurslarni ko‘rish")}
-          </Link>
-        </div>
-      </div>
-    </section>
+    <div>
+      <AboutHero />
+    </div>
   );
 };
-
-
 
 // --- Key Advantages Section ---
 const KeyAdvantagesSection = memo(() => {

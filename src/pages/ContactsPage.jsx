@@ -1,80 +1,209 @@
 "use client";
 import React, { useContext } from "react";
+import { motion } from "framer-motion";
+import { ThemeContext } from "../ThemeContext"; // Убедись, что путь правильный
 import { useTranslation } from "react-i18next";
-import { MailPlus, Send } from "lucide-react";
-import { ThemeContext } from "../ThemeContext";
-import "../index.css";
 
-const ContactPage = () => {
-  const { t } = useTranslation();
+export default function BackgroundEffect() {
   const { theme } = useContext(ThemeContext);
   const isDark = theme === "dark";
+  const { t, i18n } = useTranslation();
 
-  const sectionBg = isDark ? "bg-gray-950" : "bg-white";
-  const textColor = isDark ? "text-white" : "text-gray-900";
-  const inputBg = isDark
-    ? "bg-gray-800 text-white placeholder-gray-500"
-    : "bg-gray-50 text-gray-900 placeholder-gray-400";
-  const border = isDark ? "border-gray-700" : "border-gray-200";
-  const ringColor = isDark ? "focus:ring-blue-400" : "focus:ring-blue-600";
-  const btnBg = isDark
-    ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white"
-    : "bg-gradient-to-r from-blue-600 to-indigo-700 text-white";
+  const paths = [
+    "M-380 -189C-380 -189 -312 216 152 343C616 470 684 875 684 875",
+    "M-373 -197C-373 -197 -305 208 159 335C623 462 691 867 691 867",
+    "M-366 -205C-366 -205 -298 200 166 327C630 454 698 859 698 859",
+    "M-359 -213C-359 -213 -291 192 173 319C637 446 705 851 705 851",
+    "M-352 -221C-352 -221 -284 184 180 311C644 438 712 843 712 843",
+    "M-345 -229C-345 -229 -277 176 187 303C651 430 719 835 719 835",
+    "M-338 -237C-338 -237 -270 168 194 295C658 422 726 827 726 827",
+    "M-331 -245C-331 -245 -263 160 201 287C665 414 733 819 733 819",
+    "M-324 -253C-324 -253 -256 152 208 279C672 406 740 811 740 811",
+    "M-317 -261C-317 -261 -249 144 215 271C679 398 747 803 747 803",
+    "M-310 -269C-310 -269 -242 136 222 263C686 390 754 795 754 795",
+    "M-303 -277C-303 -277 -235 128 229 255C693 382 761 787 761 787",
+    "M-296 -285C-296 -285 -228 120 236 247C700 374 768 779 768 779",
+    "M-289 -293C-289 -293 -221 112 243 239C707 366 775 771 775 771",
+    "M-282 -301C-282 -301 -214 104 250 231C714 358 782 763 782 763",
+    "M-275 -309C-275 -309 -207 96 257 223C721 350 789 755 789 755",
+    "M-268 -317C-268 -317 -200 88 264 215C728 342 796 747 796 747",
+    "M-261 -325C-261 -325 -193 80 271 207C735 334 803 739 803 739",
+    "M-254 -333C-254 -333 -186 72 278 199C742 326 810 731 810 731",
+    "M-247 -341C-247 -341 -179 64 285 191C749 318 817 723 817 723",
+    "M-240 -349C-240 -349 -172 56 292 183C756 310 824 715 824 715",
+    "M-233 -357C-233 -357 -165 48 299 175C763 302 831 707 831 707",
+    "M-226 -365C-226 -365 -158 40 306 167C770 294 838 699 838 699",
+    "M-219 -373C-219 -373 -151 32 313 159C777 286 845 691 845 691",
+    "M-212 -381C-212 -381 -144 24 320 151C784 278 852 683 852 683",
+    "M-205 -389C-205 -389 -137 16 327 143C791 270 859 675 859 675",
+    "M-198 -397C-198 -397 -130 8 334 135C798 262 866 667 866 667",
+    "M-191 -405C-191 -405 -123 0 341 127C805 254 873 659 873 659",
+    "M-184 -413C-184 -413 -116 -8 348 119C812 246 880 651 880 651",
+    "M-177 -421C-177 -421 -109 -16 355 111C819 238 887 643 887 643",
+    "M-170 -429C-170 -429 -102 -24 362 103C826 230 894 635 894 635",
+    "M-163 -437C-163 -437 -95 -32 369 95C833 222 901 627 901 627",
+    "M-156 -445C-156 -445 -88 -40 376 87C840 214 908 619 908 619",
+    "M-149 -453C-149 -453 -81 -48 383 79C847 206 915 611 915 611",
+    "M-142 -461C-142 -461 -74 -56 390 71C854 198 922 603 922 603",
+    "M-135 -469C-135 -469 -67 -64 397 63C861 190 929 595 929 595",
+    "M-128 -477C-128 -477 -60 -72 404 55C868 182 936 587 936 587",
+    "M-121 -485C-121 -485 -53 -80 411 47C875 174 943 579 943 579",
+    "M-114 -493C-114 -493 -46 -88 418 39C882 166 950 571 950 571",
+    "M-107 -501C-107 -501 -39 -96 425 31C889 158 957 563 957 563",
+    "M-100 -509C-100 -509 -32 -104 432 23C896 150 964 555 964 555",
+    "M-93 -517C-93 -517 -25 -112 439 15C903 142 971 547 971 547",
+    "M-86 -525C-86 -525 -18 -120 446 7C910 134 978 539 978 539",
+    "M-79 -533C-79 -533 -11 -128 453 -1C917 126 985 531 985 531",
+    "M-72 -541C-72 -541 -4 -136 460 -9C924 118 992 523 992 523",
+    "M-65 -549C-65 -549 3 -144 467 -17C931 110 999 515 999 515",
+    "M-58 -557C-58 -557 10 -152 474 -25C938 102 1006 507 1006 507",
+    "M-51 -565C-51 -565 17 -160 481 -33C945 94 1013 499 1013 499",
+    "M-44 -573C-44 -573 24 -168 488 -41C952 86 1020 491 1020 491",
+    "M-37 -581C-37 -581 31 -176 495 -49C959 78 1027 483 1027 483",
+    "M-30 -589C-30 -589 38 -184 502 -57C966 70 1034 475 1034 475",
+    "M-23 -597C-23 -597 45 -192 509 -65C973 62 1041 467 1041 467",
+    "M-16 -605C-16 -605 52 -200 516 -73C980 54 1048 459 1048 459",
+    "M-9 -613C-9 -613 59 -208 523 -81C987 46 1055 451 1055 451",
+    "M-2 -621C-2 -621 66 -216 530 -89C994 38 1062 443 1062 443",
+    "M5 -629C5 -629 73 -224 537 -97C1001 30 1069 435 1069 435",
+    "M12 -637C12 -637 80 -232 544 -105C1008 22 1076 427 1076 427",
+    "M19 -645C19 -645 87 -240 551 -113C1015 14 1083 419 1083 419",
+  ];
+
+  const tr = {
+    title: t("contact.title", "Связаться с нами"),
+    name: t("contact.name", "Имя"),
+    phone: t("contact.phone", "Телефон"),
+    message: t("contact.message", "Сообщение"),
+    send: t("contact.send", "Отправить"),
+  };
 
   return (
-    <div className="relative min-h-screen overflow-hidden isolate">
-      {/* 💡 Лампа сверху */}
-      <div className="absolute top-[-250px] left-1/2 -translate-x-1/2 z-0 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/40 via-transparent to-transparent blur-[160px] animate-pulse-glow pointer-events-none" />
+    <div
+      className={`relative w-full min-h-screen flex items-center justify-center ${
+        isDark ? "bg-gray-950" : "bg-white"
+      } overflow-hidden`}
+    >
+      {/* Background Beams */}
+      <div className="absolute inset-0 z-0 [mask-image:radial-gradient(1800px_circle_at_center,white,transparent)]">
+        <svg
+          className="absolute h-full w-full"
+          width="100%"
+          height="100%"
+          viewBox="0 0 696 316"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M-380 -189C-380 -189 -312 216 152 343C616 470 684 875 684 875"
+            stroke="url(#grayGradient)"
+            strokeOpacity="0.1"
+            strokeWidth="0.8"
+          />
+          <defs>
+            <radialGradient
+              id="grayGradient"
+              cx="0"
+              cy="0"
+              r="1"
+              gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(352 34) rotate(90) scale(555 1560.62)"
+            >
+              <stop offset="0.1" stopColor="#d4d4d4" />
+              <stop offset="0.4" stopColor="#ffffff00" />
+            </radialGradient>
+          </defs>
 
-      {/* 💡 Лампа снизу */}
-      <div className="absolute bottom-[-250px] left-1/2 -translate-x-1/2 z-0 w-[900px] h-[900px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-600/30 via-transparent to-transparent blur-[160px] animate-pulse-glow pointer-events-none" />
+          {paths.map((d, i) => (
+            <motion.path
+              key={i}
+              d={d}
+              stroke={`url(#beamGradient-${i})`}
+              strokeOpacity="0.4"
+              strokeWidth="0.6"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{
+                duration: 4 + i * 0.2,
+                repeat: Infinity,
+                repeatType: "loop",
+              }}
+            />
+          ))}
 
-      <section
-        className={`relative z-10 w-full pt-32 pb-28 px-4 sm:px-8 font-sans transition-colors duration-1000 ${sectionBg}`}
-      >
-        <div className="max-w-2xl mx-auto text-center space-y-6">
-          <h1 className={`text-4xl md:text-5xl font-extrabold ${textColor}`}>
-            {t("contact.title")}
-            <MailPlus className="inline-block text-blue-500 ml-2 mb-1" size={36} />
-          </h1>
-          <p className={`text-lg ${isDark ? "text-gray-300" : "text-gray-600"}`}>
-            {t("contact.description")}
-          </p>
-
-          {/* Форма */}
-          <form className="space-y-5 w-full max-w-md mx-auto mt-10 bg-white/10 dark:bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl">
+          <defs>
+            {paths.map((_, i) => (
+              <linearGradient
+                id={`beamGradient-${i}`}
+                key={i}
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop stopColor="#18CCFC" stopOpacity="0" />
+                <stop offset="0.5" stopColor="#6344F5" />
+                <stop offset="1" stopColor="#AE48FF" stopOpacity="0" />
+              </linearGradient>
+            ))}
+          </defs>
+        </svg>
+      </div>
+      <div className="z-10 w-full max-w-lg mx-auto px-6 py-10 backdrop-blur-xl bg-white/5 dark:bg-neutral-900/10 rounded-3xl shadow-2xl border border-white/10 transition-all duration-500 ease-in-out">
+        <h2 className="text-4xl font-extrabold text-center text-white mb-8 drop-shadow-md">
+          {t("contact.title")}
+        </h2>
+        <form className="space-y-6">
+          <div className="group relative">
             <input
               type="text"
-              placeholder={t("contact.form.name")}
-              className={`w-full px-4 py-3 rounded-xl border ${border} ${inputBg}
-                focus:outline-none focus:ring-2 ${ringColor} transition duration-300`}
+              id="name"
+              className="peer w-full px-5 py-3 rounded-xl border border-white/20 bg-white/5 text-white placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg"
             />
+            <label
+              htmlFor="name"
+              className="absolute left-5 -top-3.5 text-neutral-300 text-sm transition-all duration-300 ease-in-out peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-teal-400 bg-white/0 px-1"
+            >
+              {t("contact.name")}
+            </label>
+          </div>
+
+          <div className="group relative">
             <input
               type="tel"
-              placeholder="+998 90 123 45 67"
-              className={`w-full px-4 py-3 rounded-xl border ${border} ${inputBg}
-                focus:outline-none focus:ring-2 ${ringColor} transition duration-300`}
+              id="phone"
+              className="peer w-full px-5 py-3 rounded-xl border border-white/20 bg-white/5 text-white placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg"
             />
-            <textarea
-              rows="6"
-              placeholder={t("contact.form.message")}
-              className={`w-full px-4 py-3 rounded-xl border ${border} ${inputBg}
-                focus:outline-none focus:ring-2 ${ringColor} resize-y transition duration-300`}
-            ></textarea>
-            <button
-              type="submit"
-              className={`w-full py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-3
-                ${btnBg} hover:brightness-110 active:scale-[0.98]
-                shadow-lg transition-all duration-200 ease-out focus:outline-none focus:ring-2 ${ringColor}`}
+            <label
+              htmlFor="phone"
+              className="absolute left-5 -top-3.5 text-neutral-300 text-sm transition-all duration-300 ease-in-out peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-teal-400 bg-white/0 px-1"
             >
-              <Send className="w-5 h-5" />
-              {t("contact.form.send")}
-            </button>
-          </form>
-        </div>
-      </section>
+              {t("contact.phone")}
+            </label>
+          </div>
+
+          <div className="group relative">
+            <textarea
+              id="message"
+              rows="4"
+              className="peer w-full px-5 py-3 rounded-xl border border-white/20 bg-white/5 text-white placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-none transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg"
+            ></textarea>
+            <label
+              htmlFor="message"
+              className="absolute left-5 -top-3.5 text-neutral-300 text-sm transition-all duration-300 ease-in-out peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-teal-400 bg-white/0 px-1"
+            >
+              {t("contact.message")}
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-600 hover:to-indigo-700 text-white font-semibold text-lg transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-98 shadow-lg hover:shadow-xl"
+          >
+            {t("contact.send")}
+          </button>
+        </form>
+      </div>
     </div>
   );
-};
-
-export default ContactPage;
+}

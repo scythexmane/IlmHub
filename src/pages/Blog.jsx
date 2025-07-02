@@ -8,74 +8,55 @@ import { HiOutlineVolumeUp, HiOutlineVolumeOff } from "react-icons/hi";
 // ИМПОРТИРУЕМ ХУК useTheme ИЗ НАШЕГО КОНТЕКСТА
 import { useTheme } from '../ThemeContext';
 
-// --- Начало данных для галереи (без изменений) ---
-const mediaData = [
-  {
-    id: "1",
-    type: "image",
-    src: "https://avatars.mds.yandex.net/get-altay/13061180/2a0000018ee682dc9a08a4a3be1b9fd218b7/XXXL",
-    thumbnail: "/src/assets/images/screen_img_1_thumb.jpg",
-    aspectRatio: "4/3",
-  },
-  {
-    id: "2",
-    type: "video",
-    src: "https://scontent-ams2-1.cdninstagram.com/o1/v/t16/f2/m86/AQOxKEu1uPewGnTPQxIJVdC0yETwLGlBXAlDDry0FnhJoJliW-knhyZv0pqJ4_wbfeBfJx9ypYDHLacgg1lcUwP8xzFTpsq3FN46g3Q.mp4?stp=dst-mp4&efg=eyJxZV9ncm91cHMiOiJbXCJpZ193ZWJfZGVsaXZlcnlfdnRzX290ZlwiXSIsInZlbmNvZGVfdGFnIjoidnRzX3ZvZF91cmxnZW4uY2xpcHMuYzIuNzIwLmJhc2VsaW5lIn0&_nc_cat=105&vs=1912436529510619_352456777&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9EMDQ0QkM3QkI4QTU2RjA2OUZENjhGM0EzNUUwQTU4OV92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYOnBhc3N0aHJvdWdoX2V2ZXJzdG9yZS9HT3N0ZlI1ellpdklHNllEQUhiU3d5Yko1aEJRYmtZTEFBQUYVAgLIARIAKAAYABsAFQAAJs7G2fDv9YtAFQIoAkMzLBdAOyp%2B%2Bdsi0RgSZGFzaF9iYXNlbGluZV8xX3YxEQB1%2Fgdl5p0BAA%3D%3D&_nc_rid=c758847b6f&ccb=9-4&oh=00_AfN1yVgGv9drsDI3KalvwG9OzddmkxcH249L6JBY4IxW0Q&oe=6864930D&_nc_sid=10d13b",
-    thumbnail: "/src/assets/images/screen_video_1_thumb.jpg",
-    aspectRatio: "9/16",
-  },
-  {
-    id: "3",
-    type: "image",
-    src: "https://avatars.mds.yandex.net/get-altay/10878699/2a000001907399487aff9ace3836e893c658/XXXL",
-    thumbnail: "/src/assets/images/screen_img_2_thumb.jpg",
-    aspectRatio: "4/3",
-  },
-  {
-    id: "4",
-    type: "video",
-    src: "https://scontent-ams2-1.cdninstagram.com/o1/v/t16/f2/m86/AQNvLpg6k5oZ3ZzYCrSSaUUdjgcxhABUdNU-CqzrkvQtHEiuKmLSPYtnxeCNijUKl_jAdCAu5zpFbG7zK1PTEO0YQ0mjllmJrgtBZFo.mp4?stp=dst-mp4&efg=eyJxZV9ncm91cHMiOiJbXCJpZ193ZWJfZGVsaXZlcnlfdnRzX290ZlwiXSIsInZlbmNvZGVfdGFnIjoidnRzX3ZvZF91cmxnZW4uY2xpcHMuYzIuMzYwLmJhc2VsaW5lIn0&_nc_cat=108&vs=624351543793062_3006855563&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC81MjQ3NTA5MzdDMjY1NzgwOTRFNDA3MEJEQTA0ODE4OF92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYOnBhc3N0aHJvdWdoX2V2ZXJzdG9yZS9HTkx3YkJ6ZUtaWDhTaFlDQUtKLV9VXzB6aEpfYnFfRUFBQUYVAgLIARIAKAAYABsAFQAAJpL7w6iqyLg%2FFQIoAkMzLBdATZmZmZmZmhgSZGFzaF9iYXNlbGluZV8zX3YxEQB1%2Fgdl5p0BAA%3D%3D&_nc_rid=8742351844&ccb=9-4&oh=00_AfOwyNmkivVW3pLNiU5ht7WvL5GLMqfWzfWkdHd3OziKkw&oe=68647CF9&_nc_sid=10d13b",
-    thumbnail: "/src/assets/images/screen_video_2_thumb.jpg",
-    aspectRatio: "9/16",
-  },
-  {
-    id: "5",
-    type: "image",
-    src: "https://avatars.mds.yandex.net/get-altay/12865251/2a0000018ee682f8be0b8ec7e54c1ad4e33e/XXXL",
-    thumbnail: "/src/assets/images/screen_img_3_thumb.jpg",
-    aspectRatio: "9/16",
-  },
-  {
-    id: "6",
-    type: "image",
-    src: "https://avatars.mds.yandex.net/get-altay/4716261/2a0000018e13848c77cc15d996642591586f/XXXL",
-    thumbnail: "/src/assets/images/screen_img_6_thumb.jpg",
-    aspectRatio: "4/3",
-  },
-  {
-    id: "7",
-    type: "video",
-    src: "https://scontent-ams2-1.cdninstagram.com/o1/v/t16/f2/m86/AQPe8C7wAaET0R8m3u16k4whdv6QFMSQHQF09YuGUShSduW_J0B7l9OdB7I1084t4ptaTo_NSp9acPGOmnb6uF1UB59NcYqaWL65yvA.mp4?stp=dst-mp4&efg=eyJxZV9ncm91cHMiOiJbXCJpZ193ZWJfZGVsaXZlcnlfdnRzX290ZlwiXSIsInZlbmNvZGVfdGFnIjoidnRzX3ZvZF91cmxnZW4uY2xpcHMuYzIuNzIwLmJhc2VsaW5lIn0&_nc_cat=105&vs=1525934631702506_2024537453&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC8wMzQyRDA5N0JFNEM4N0U1NDY5M0M5NENDMzhEQjNCQl92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYOnBhc3N0aHJvdWdoX2V2ZXJzdG9yZS9HR19FWFI0Tk5ucEsxUGNFQUI2dF9wUXQ1MDVyYnFfRUFBQUYVAgLIARIAKAAYABsAFQAAJpTd%2BLXMhKlAFQIoAkMzLBdARrul41P3zxgSZGFzaF9iYXNlbGluZV8xX3YxEQB1%2Fgdl5p0BAA%3D%3D&_nc_rid=123e376e5f&ccb=9-4&oh=00_AfP9XpQhUo_yXBhW5ocn-aj2L3Oa7H2aeHBmOKqVQaOfAA&oe=686493AC&_nc_sid=10d13b",
-    thumbnail: "/src/assets/images/screen_img_4_thumb.jpg",
-    aspectRatio: "9/16",
-  },
-  {
-    id: "8",
-    type: "image",
-    src: "https://avatars.mds.yandex.net/get-altay/10661403/2a000001907399637fd57394aa1734a38e64/XXXL",
-    thumbnail: "/src/assets/images/screen_img_5_thumb.jpg",
-    aspectRatio: "4/3",
-  },
+// --- ИМПОРТ ЛОКАЛЬНЫХ ВИДЕОФАЙЛОВ ---
+// Убедитесь, что пути здесь правильные относительно вашего файла Gallery.jsx.
+// Например, если Gallery.jsx находится в src/components/, а ваши видео в src/assets/videos/,
+// то путь будет '../../assets/videos/v1.mp4'
+import video1 from '../assets/v1.mp4';
+import video2 from '../assets/v2.mp4';
+import video3 from '../assets/v3.mp4';
+import video4 from '../assets/v4.mp4';
+import video5 from '../assets/v5.mp4';
+import video6 from '../assets/v6.mp4';
+import video7 from '../assets/v7.mp4';
+import video8 from '../assets/v8.mp4';
+
+// --- Начальные данные для галереи (без thumbnail) ---
+const initialMediaData = [
+  { id: "img-1", type: "image", src: "https://avatars.mds.yandex.net/get-altay/10878699/2a000001907399487aff9ace3836e893c658/XXXL", aspectRatio: "4/3" },
+  { id: "vid-2", type: "video", src: video2, aspectRatio: "9/16" },
+  { id: "img-2", type: "image", src: "https://avatars.mds.yandex.net/get-vh/4439705/2a0000018ee6730b592c61f457f88b1ff8ee/smart_crop_500x500", aspectRatio: "1/1" },
+  { id: "vid-3", type: "video", src: video3, aspectRatio: "9/16" },
+  { id: "img-3", type: "image", src: "https://avatars.mds.yandex.net/get-altay/4716261/2a0000018e13848c77cc15d996642591586f/XXXL", aspectRatio: "3/2" },
+  { id: "vid-4", type: "video", src: video4, aspectRatio: "9/16" },
+  { id: "img-4", type: "image", src: "https://avatars.mds.yandex.net/get-altay/13229524/2a0000018ee682d3f3e69f971e6c62a756d9/XXXL", aspectRatio: "2/3" },
+  { id: "vid-5", type: "video", src: video5, aspectRatio: "9/16" },
+  { id: "img-5", type: "image", src: "https://avatars.mds.yandex.net/get-altay/13061180/2a0000018ee682dc9a08a4a3be1b9fd218b7/XXXL", aspectRatio: "16/9" },
+  { id: "vid-6", type: "video", src: video6, aspectRatio: "9/16" },
+  { id: "img-6", type: "image", src: "https://avatars.mds.yandex.net/get-altay/12865251/2a0000018ee682f8be0b8ec7e54c1ad4e33e/XXXL", aspectRatio: "4/3" },
+  { id: "vid-7", type: "video", src: video7, aspectRatio: "9/16" },
+  { id: "img-7", type: "image", src: "https://avatars.mds.yandex.net/get-vh/5634303/2a0000018ee68d32cd98644720e867208b0d/smart_crop_500x500", aspectRatio: "1/1" },
+  { id: "vid-8", type: "video", src: video8, aspectRatio: "9/16" },
+    { id: "img-7", type: "image", src: "https://avatars.mds.yandex.net/get-vh/5634303/2a0000018ee68d32cd98644720e867208b0d/smart_crop_500x500", aspectRatio: "1/1" },
+  { id: "vid-8", type: "video", src: video8, aspectRatio: "9/16" },
 ];
-// --- Конец данных для галереи ---
+
+// Функция для случайного перемешивания массива (алгоритм Фишера-Йетса)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Обмен элементов
+  }
+  return array;
+}
 
 /**
  * GalleryItem component displays an individual media item (image or video) in the gallery.
- * It uses Framer Motion for hover effects. Lazy loading is removed.
+ * It uses Framer Motion for hover effects.
  */
 const GalleryItem = ({ media, onClick }) => {
   const videoRef = useRef(null);
-  const { isDarkMode } = useTheme(); // Получаем isDarkMode из контекста
+  const { isDarkMode } = useTheme();
 
   const isVideo = media.type === "video";
 
@@ -92,18 +73,26 @@ const GalleryItem = ({ media, onClick }) => {
     }
   };
 
-  const aspectRatioClass = media.aspectRatio === "9/16" ? "pb-[177.77%]" : "pb-[75%]";
-  // Динамический класс для фона элементов галереи
-  // В темной теме border-transparent, в светлой - border-gray-300
+  const getAspectRatioClass = (ratio) => {
+    switch (ratio) {
+      case "9/16": return "pb-[177.77%]"; // Portrait video
+      case "4/3": return "pb-[75%]";
+      case "16/9": return "pb-[56.25%]";
+      case "3/2": return "pb-[66.66%]";
+      case "2/3": return "pb-[150%]";
+      case "1/1": return "pb-[100%]";
+      default: return "pb-[75%]";
+    }
+  };
+  const aspectRatioClass = getAspectRatioClass(media.aspectRatio);
+
   const itemBorderClass = isDarkMode ? "border-transparent" : "border-gray-300";
 
   return (
     <motion.div
-      // Применяем border-class и transition-colors для плавного изменения цвета рамки
       className={`relative cursor-pointer rounded-lg overflow-hidden group border ${itemBorderClass} transition-colors duration-300`}
       whileHover={{
         scale: 1.03,
-        // Тени для hover, можно настроить для разных тем, но сейчас одинаковые
         boxShadow:
           "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
       }}
@@ -118,9 +107,8 @@ const GalleryItem = ({ media, onClick }) => {
             <video
               ref={videoRef}
               src={media.src}
-              poster={media.thumbnail}
               controls={false}
-              muted // Всегда muted для автовоспроизведения на hover
+              muted
               loop
               playsInline
               className="absolute inset-0 w-full h-full object-cover"
@@ -153,43 +141,31 @@ const GalleryItem = ({ media, onClick }) => {
  */
 const MediaModal = ({ media, onClose, onNavigate }) => {
   const videoRef = useRef(null);
-  const [isMuted, setIsMuted] = useState(false); // Состояние для отслеживания muted
+  const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const { isDarkMode } = useTheme(); // Получаем isDarkMode из контекста
+  const { isDarkMode } = useTheme();
 
-  // Эффект для управления видео при открытии модала или смене медиа
   useEffect(() => {
     if (media && media.type === "video" && videoRef.current) {
-      // Устанавливаем muted статус видеоплеера на основе состояния isMuted
       videoRef.current.muted = isMuted;
-
-      // Пытаемся воспроизвести видео
       videoRef.current
         .play()
         .then(() => {
           setIsPlaying(true);
         })
         .catch((error) => {
-          // Автовоспроизведение может быть заблокировано браузером
           console.warn("Video autoplay failed:", error);
           setIsPlaying(false);
         });
     }
 
-    // Cleanup-функция при закрытии модала или смене медиа
     return () => {
       if (videoRef.current) {
         videoRef.current.pause();
-        // ВАЖНО: УДАЛЕНО: videoRef.current.currentTime = 0;
-        // Это было причиной перезапуска видео при переключении между медиа.
-        // Если вы хотите, чтобы видео всегда начиналось с начала при ЛЮБОМ закрытии/открытии,
-        // вы можете вернуть эту строку, но это не соответствует "не начинается заново".
       }
       setIsPlaying(false);
-      // isMuted не сбрасываем, чтобы состояние mute сохранялось между открытиями/навигацией,
-      // пока модал полностью не закрыт.
     };
-  }, [media, isMuted]); // Зависит от media (для смены видео) и isMuted (для применения состояния)
+  }, [media, isMuted]);
 
   const handleTogglePlay = () => {
     if (videoRef.current) {
@@ -205,8 +181,8 @@ const MediaModal = ({ media, onClose, onNavigate }) => {
 
   const handleToggleMute = () => {
     if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted; // Переключаем muted свойство видео элемента
-      setIsMuted(videoRef.current.muted); // Обновляем состояние isMuted
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
     }
   };
 
@@ -232,17 +208,15 @@ const MediaModal = ({ media, onClose, onNavigate }) => {
     exit: { opacity: 0, transition: { duration: 0.2 } },
   };
 
-  // Цвета для кнопок модального окна в зависимости от темы
-  // Используем более нейтральный темный фон для кнопок модала, чтобы они были видны на любом фоне медиа
   const modalButtonBgClass = "bg-black/50 hover:bg-black/70";
   const modalButtonTextColorClass = "text-white";
-  const modalContentBgClass = isDarkMode ? "bg-gray-800" : "bg-white"; // Фон самого окна модала
+  const modalContentBgClass = isDarkMode ? "bg-gray-800" : "bg-white";
 
   return (
     <AnimatePresence>
       {media && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80" // Фон модала всегда темный для контраста с содержимым
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80"
           variants={backdropVariants}
           initial="hidden"
           animate="visible"
@@ -251,12 +225,15 @@ const MediaModal = ({ media, onClose, onNavigate }) => {
         >
           <motion.div
             className={`relative w-full h-full rounded-lg shadow-2xl flex flex-col items-center justify-center ${
-              media.aspectRatio === "9/16" ? "max-w-screen-md" : "max-w-screen-xl"
+              media.aspectRatio === "9/16"
+                ? "max-w-screen-sm"
+                : media.aspectRatio === "16/9"
+                ? "max-w-screen-xl"
+                : "max-w-screen-lg"
             } ${modalContentBgClass} transition-colors duration-300`}
             variants={modalVariants}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close button */}
             <button
               onClick={onClose}
               className={`absolute top-4 right-4 z-10 p-2 rounded-full ${modalButtonBgClass} ${modalButtonTextColorClass} transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500`}
@@ -278,7 +255,6 @@ const MediaModal = ({ media, onClose, onNavigate }) => {
               </svg>
             </button>
 
-            {/* Navigation buttons */}
             <button
               onClick={() => onNavigate("prev")}
               className={`absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full ${modalButtonBgClass} ${modalButtonTextColorClass} transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500`}
@@ -320,7 +296,6 @@ const MediaModal = ({ media, onClose, onNavigate }) => {
               </svg>
             </button>
 
-            {/* Media content (Image or Video) */}
             <div className="relative flex-grow w-full h-full flex items-center justify-center p-2 sm:p-4">
               {media.type === "image" ? (
                 <img
@@ -333,14 +308,12 @@ const MediaModal = ({ media, onClose, onNavigate }) => {
                   <video
                     ref={videoRef}
                     src={media.src}
-                    controls={false} // Отключаем нативные контролы
+                    controls={false}
                     className="w-auto h-full object-contain rounded-md"
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
-                    loop // Видео зацикливается
-                    // muted={isMuted} // Muted состояние управляется в useEffect и handleToggleMute
+                    loop
                   />
-                  {/* Custom video controls */}
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 p-2 bg-black/50 rounded-lg">
                     <button onClick={handleTogglePlay} className="text-white p-2">
                       {isPlaying ? (
@@ -380,24 +353,32 @@ const MediaModal = ({ media, onClose, onNavigate }) => {
 };
 
 // --- Основной компонент Галереи ---
-
 const Gallery = () => {
   const [selectedMedia, setSelectedMedia] = useState(null);
   const [mediaIndex, setMediaIndex] = useState(0);
-  const { isDarkMode } = useTheme(); // Получаем isDarkMode из контекста
+  const { isDarkMode } = useTheme();
+  // Состояние для хранения перемешанных данных
+  const [shuffledMediaData, setShuffledMediaData] = useState([]);
+
+  useEffect(() => {
+    // Перемешиваем данные при монтировании компонента
+    // Используем spread-оператор [...initialMediaData] для создания копии массива,
+    // чтобы не изменять исходный массив initialMediaData
+    setShuffledMediaData(shuffleArray([...initialMediaData]));
+  }, []); // Пустой массив зависимостей означает, что эффект запустится один раз при монтировании
 
   const handleNavigate = useCallback((direction) => {
     setMediaIndex((prevIndex) => {
       let newIndex = prevIndex;
       if (direction === "next") {
-        newIndex = (prevIndex + 1) % mediaData.length;
+        newIndex = (prevIndex + 1) % shuffledMediaData.length;
       } else if (direction === "prev") {
-        newIndex = (prevIndex - 1 + mediaData.length) % mediaData.length;
+        newIndex = (prevIndex - 1 + shuffledMediaData.length) % shuffledMediaData.length;
       }
-      setSelectedMedia(mediaData[newIndex]);
+      setSelectedMedia(shuffledMediaData[newIndex]);
       return newIndex;
     });
-  }, []);
+  }, [shuffledMediaData]); // Зависимость от shuffledMediaData
 
   // Keyboard navigation for modal
   useEffect(() => {
@@ -422,7 +403,7 @@ const Gallery = () => {
   const handleMediaClick = useCallback((media, index) => {
     setSelectedMedia(media);
     setMediaIndex(index);
-  }, []);
+  }, [shuffledMediaData]); // Зависимость от shuffledMediaData
 
   const handleCloseModal = useCallback(() => {
     setSelectedMedia(null);
@@ -435,21 +416,18 @@ const Gallery = () => {
     500: 1,
   };
 
-  // Определяем основной класс для фона и текста всей страницы
   const pageBgClass = isDarkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900";
 
   return (
     <div className={`min-h-screen font-sans ${pageBgClass} transition-colors duration-300`}>
-      {/* Здесь должна быть ваша существующая навигационная панель */}
-      {/* Ваша глобальная кнопка смены темы будет использовать toggleTheme из ThemeContext */}
-
       <main className="pt-4 pb-8 px-4">
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
-          {mediaData.map((media, index) => (
+          {/* Используем shuffledMediaData для рендеринга */}
+          {shuffledMediaData.map((media, index) => (
             <GalleryItem
               key={media.id}
               media={media}
@@ -464,8 +442,6 @@ const Gallery = () => {
         onClose={handleCloseModal}
         onNavigate={handleNavigate}
       />
-
-      
     </div>
   );
 };

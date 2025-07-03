@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
-import { Link, useNavigate, useLocation } from "react-router-dom"; // Добавлен useLocation
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 
@@ -293,14 +293,47 @@ const CoursesPreview = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedCourse, setSelectedCourse] = useState(null);
 
-  const navigate = useNavigate(); // Используем useNavigate внутри компонента
-  const location = useLocation(); // Используем useLocation внутри компонента
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Ref для элемента фильтра, чтобы отслеживать его позицию
+  const filterRef = useRef(null);
+  // Состояние для управления "липкостью" фильтра
+  const [isFilterSticky, setIsFilterSticky] = useState(false);
 
   useEffect(() => {
     if (inView) {
       controls.start("visible");
     }
   }, [controls, inView]);
+
+  // Эффект для обработки прокрутки и определения "липкости" фильтра
+  useEffect(() => {
+    const handleScroll = () => {
+      if (filterRef.current) {
+        const rect = filterRef.current.getBoundingClientRect();
+        // Определяем, когда верхняя граница фильтра достигает верха окна
+        // Или, точнее, чуть ниже Navbar, если он есть.
+        // Допущение: у вас есть Navbar с классом 'fixed' и его высота определена
+        // либо через Tailwind, либо через CSS-переменную.
+        // Пример: если navbar 64px, то threshold = 64
+        // Мы используем 0 пока для простоты, но лучше адаптировать под высоту Navbar
+        const navbarHeight = document.querySelector('nav.fixed')?.offsetHeight || 0; // Получаем высоту фиксированного навбара
+        
+        // Когда верхняя часть фильтра поднимается выше (или равна) отступа navbarHeight
+        if (rect.top <= navbarHeight) {
+          setIsFilterSticky(true);
+        } else {
+          setIsFilterSticky(false);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Пустой массив зависимостей, чтобы эффект запускался один раз
 
   const filteredCourses =
     activeCategory === "all"
@@ -334,23 +367,16 @@ const CoursesPreview = () => {
     setSelectedCourse(null);
   }, []);
 
-  // Обновленная функция для кнопки "Все курсы" - ПЕРЕМЕЩЕНА ВНУТРЬ КОМПОНЕНТА
   const handleViewAllCoursesClick = useCallback(() => {
     if (location.pathname !== "/courses") {
       navigate("/courses");
-      // Небольшая задержка, чтобы навигация успела завершиться,
-      // прежде чем мы пытаемся прокрутить окно.
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }, 100);
     } else {
-      // Если мы уже на странице /courses, просто прокручиваем вверх
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-    // Также можно сбросить категорию на "все", если это имеет смысл для страницы курсов
-    // setActiveCategory('all'); // Раскомментировать, если хотите сбрасывать фильтр
   }, [navigate, location.pathname]);
-
 
   return (
     <motion.section
@@ -383,10 +409,15 @@ const CoursesPreview = () => {
         </motion.p>
       </div>
 
-      {/* Improved Category Filter */}
+      {/* Improved Category Filter - Теперь с ref и условными стилями */}
       <motion.div
+        ref={filterRef} // Ссылка на этот элемент
         variants={titleVariants}
-        className="flex justify-center mb-16 relative z-10"
+        className={`flex justify-center mb-16 relative z-10 w-full transition-all duration-300 ${
+          isFilterSticky ? "sticky top-0 lg:top-[var(--navbar-height, 0px)] bg-[var(--color-bg)] py-4 shadow-lg z-30" : "" // top-0 или используйте --navbar-height
+        }`}
+        // Дополнительный отступ, если фильтр становится липким, чтобы контент не "прыгал"
+        style={isFilterSticky ? { marginBottom: '4rem' } : {}} 
       >
         <div className="flex flex-row flex-wrap justify-center items-center gap-2 p-2 bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded-xl shadow-inner">
           {categories.map((category) => {
@@ -477,10 +508,10 @@ const CoursesPreview = () => {
         <button
           onClick={handleViewAllCoursesClick}
           className="inline-flex items-center justify-center px-8 py-4 rounded-full font-bold text-lg
-                     bg-[var(--color-primary)] text-white shadow-lg transition-all duration-300 ease-in-out
-                     hover:bg-[var(--color-primary-dark)] dark:hover:bg-[var(--color-primary-dark-dark)]
-                     hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[var(--color-primary)] focus:ring-opacity-50
-                     dark:bg-[var(--color-primary-dark)] dark:text-white dark:hover:text-white"
+                       bg-[var(--color-primary)] text-white shadow-lg transition-all duration-300 ease-in-out
+                       hover:bg-[var(--color-primary-dark)] dark:hover:bg-[var(--color-primary-dark-dark)]
+                       hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[var(--color-primary)] focus:ring-opacity-50
+                       dark:bg-[var(--color-primary-dark)] dark:text-white dark:hover:text-gray-400"
           aria-label={t("courses.view_all")}
         >
           {t("courses.view_all")}

@@ -10,7 +10,7 @@ const HeroSection = () => {
 
   return (
     <section
-      className={`relative z-10 overflow-hidden px-6 sm:px-12 lg:px-24 pt-32 pb-24 min-h-[100vh] transition-colors duration-500 ${
+      className={`relative z-10 overflow-hidden px-6 sm:px-12 lg:px-24 pt-32 pb-24 min-h-[90vh] transition-colors duration-500 ${
         isDarkMode ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"
       }`}
     >
@@ -22,7 +22,9 @@ const HeroSection = () => {
           ))}
         </div>
       </div>
-
+<br />
+<br />
+<br />
       {/* Контент */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-4xl mx-auto space-y-10">
         <motion.h1

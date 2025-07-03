@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import '../index.css';
+import "../index.css";
 // Importing Lucide-react icons
 import {
   Code,
@@ -596,7 +596,7 @@ const CoursesPage = () => {
 
   return (
     <motion.div
-      className="min-h-screen px-4 sm:px-8 lg:px-16 py-12 md:py-20 bg-[var(--color-bg)] text-[var(--color-text)] relative overflow-hidden"
+      className="min-h-screen px-4 sm:px-8 lg:px-16 py-12 md:py-20 bg-[var(--color-bg)] text-[var(--color-text)] relative "
       initial="hidden"
       animate="visible"
       variants={sectionVariants}
@@ -607,10 +607,10 @@ const CoursesPage = () => {
         <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-[var(--color-secondary-light)] rounded-full mix-blend-multiply filter blur-3xl animate-blob-two"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[var(--color-accent-light)] rounded-full mix-blend-multiply filter blur-3xl animate-blob-three"></div>
       </div>
-<br />
-<br />
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header Section */}
+      <br />
+      <br />
+      <div className="pt-[100px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Заголовок */}
         <motion.div
           className="text-center mb-12 md:mb-16"
           variants={sectionVariants}
@@ -621,7 +621,6 @@ const CoursesPage = () => {
           >
             {t("coursesPage.title")}
           </motion.h1>
-          <br />
           <motion.p
             variants={subtitleVariants}
             className="text-lg md:text-xl text-[var(--color-muted)] max-w-3xl mx-auto leading-relaxed"
@@ -630,200 +629,203 @@ const CoursesPage = () => {
           </motion.p>
         </motion.div>
 
+        {/* Основной контент */}
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* --- Filters Sidebar --- */}
-          <motion.aside
-            className="lg:w-1/4 p-6 bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded-2xl shadow-xl lg:sticky top-28 h-fit flex flex-col gap-6"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <h3 className="text-2xl font-bold text-[var(--color-heading)] mb-4 flex items-center gap-2">
-              <Filter size={24} className="text-[var(--color-primary)]" />{" "}
-              {t("coursesPage.filters.title")}
-            </h3>
+          {/* --- Sidebar Filters (sticky) --- */}
+          <div className="w-full lg:w-1/4">
+            <motion.div
+              className="sticky top-[85px] bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded-xl shadow-xl p-6"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <h3 className="text-xl font-bold text-[var(--color-heading)] mb-4 flex items-center gap-2">
+                <Filter size={24} className="text-[var(--color-primary)]" />{" "}
+                {t("coursesPage.filters.title")}
+              </h3>
 
-            {/* Search Filter */}
-            <div className="filter-group">
-              <label
-                htmlFor="search-courses"
-                className="block text-md font-semibold text-[var(--color-text)] mb-2"
-              >
-                {t("coursesPage.filters.search")}
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  id="search-courses"
-                  placeholder={t("coursesPage.filters.search_placeholder")}
-                  value={searchTerm}
-                  onChange={handleSearchChange}
-                  className="w-full p-3 pl-10 rounded-md bg-[var(--color-bg-input)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all duration-200"
-                />
-                <Search
-                  size={20}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-muted)]"
-                />
+              {/* Search Filter */}
+              <div className="filter-group">
+                <label
+                  htmlFor="search-courses"
+                  className="block text-md font-semibold text-[var(--color-text)] mb-2"
+                >
+                  {t("coursesPage.filters.search")}
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    id="search-courses"
+                    placeholder={t("coursesPage.filters.search_placeholder")}
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    className="w-full p-3 pl-10 rounded-md bg-[var(--color-bg-input)] border border-[var(--color-border)] text-[var(--color-text)] placeholder-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all duration-200"
+                  />
+                  <Search
+                    size={20}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-muted)]"
+                  />
+                </div>
               </div>
-            </div>
 
-            {/* Category Filter */}
-            <div className="filter-group">
-              <h4 className="text-md font-semibold text-[var(--color-text)] mb-2">
-                {t("coursesPage.filters.category")}
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category) => {
-                  const isActive = activeCategory === category.key;
-                  const CategoryIcon = category.icon;
-                  return (
-                    <motion.button
-                      key={category.key}
-                      onClick={() => handleCategoryChange(category.key)}
-                      className={`relative px-4 py-2 text-sm font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] flex items-center gap-2
+              {/* Category Filter */}
+              <div className="filter-group">
+                <h4 className="text-md font-semibold text-[var(--color-text)] mb-2">
+                  {t("coursesPage.filters.category")}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((category) => {
+                    const isActive = activeCategory === category.key;
+                    const CategoryIcon = category.icon;
+                    return (
+                      <motion.button
+                        key={category.key}
+                        onClick={() => handleCategoryChange(category.key)}
+                        className={`relative px-4 py-2 text-sm font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] flex items-center gap-2
                                   ${
                                     isActive
                                       ? "bg-[var(--color-primary)] text-white"
                                       : "bg-[var(--color-bg-input)] text-[var(--color-muted)] hover:bg-[var(--color-hover)] hover:text-[var(--color-text)]"
                                   }`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      aria-pressed={isActive}
-                    >
-                      <CategoryIcon size={16} />
-                      {t(`categories.${category.key}`)}
-                    </motion.button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Price Range Filter */}
-            <div className="filter-group">
-              <h4 className="text-md font-semibold text-[var(--color-text)] mb-4">
-                {t("coursesPage.filters.price_range")}
-              </h4>
-              <Slider
-                range
-                min={minPrice}
-                max={maxPrice}
-                step={10000}
-                value={priceRange}
-                onChange={handlePriceRangeChange}
-                trackStyle={[{ backgroundColor: "var(--color-primary)" }]}
-                handleStyle={[
-                  {
-                    backgroundColor: "var(--color-primary)",
-                    borderColor: "var(--color-primary)",
-                    opacity: 1,
-                  },
-                  {
-                    backgroundColor: "var(--color-primary)",
-                    borderColor: "var(--color-primary)",
-                    opacity: 1,
-                  },
-                ]}
-                railStyle={{ backgroundColor: "var(--color-border)" }}
-              />
-              <div className="flex justify-between text-sm text-[var(--color-muted)] mt-2">
-                <span>{formatPrice(priceRange[0])}</span>
-                <span>{formatPrice(priceRange[1])}</span>
-              </div>
-            </div>
-
-            {/* Duration Range Filter */}
-            <div className="filter-group">
-              <h4 className="text-md font-semibold text-[var(--color-text)] mb-4">
-                {t("coursesPage.filters.duration_range")}
-              </h4>
-              <Slider
-                range
-                min={minDuration}
-                max={maxDuration}
-                step={1}
-                value={durationRange}
-                onChange={handleDurationRangeChange}
-                trackStyle={[{ backgroundColor: "var(--color-primary)" }]}
-                handleStyle={[
-                  {
-                    backgroundColor: "var(--color-primary)",
-                    borderColor: "var(--color-primary)",
-                    opacity: 1,
-                  },
-                  {
-                    backgroundColor: "var(--color-primary)",
-                    borderColor: "var(--color-primary)",
-                    opacity: 1,
-                  },
-                ]}
-                railStyle={{ backgroundColor: "var(--color-border)" }}
-              />
-              <div className="flex justify-between text-sm text-[var(--color-muted)] mt-2">
-                <span>{formatDuration(durationRange[0])}</span>
-                <span>{formatDuration(durationRange[1])}</span>
-              </div>
-            </div>
-
-            {/* Sort By */}
-            <div className="filter-group">
-              <label
-                htmlFor="sort-by"
-                className="block text-md font-semibold text-[var(--color-text)] mb-2"
-              >
-                {t("coursesPage.filters.sort_by")}
-              </label>
-              <div className="relative">
-                <select
-                  id="sort-by"
-                  value={sortBy}
-                  onChange={handleSortChange}
-                  className="block appearance-none w-full bg-[var(--color-bg-input)] border border-[var(--color-border)] text-[var(--color-text)] py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all duration-200"
-                >
-                  <option value="default">
-                    {t("coursesPage.filters.sort_default")}
-                  </option>
-                  <option value="price_asc">
-                    {t("coursesPage.filters.sort_price_asc")}
-                  </option>
-                  <option value="price_desc">
-                    {t("coursesPage.filters.sort_price_desc")}
-                  </option>
-                  <option value="duration_asc">
-                    {t("coursesPage.filters.sort_duration_asc")}
-                  </option>
-                  <option value="duration_desc">
-                    {t("coursesPage.filters.sort_duration_desc")}
-                  </option>
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[var(--color-muted)]">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        aria-pressed={isActive}
+                      >
+                        <CategoryIcon size={16} />
+                        {t(`categories.${category.key}`)}
+                      </motion.button>
+                    );
+                  })}
                 </div>
               </div>
-            </div>
 
-            {/* Reset Filters Button */}
-            <motion.button
-              onClick={() => {
-                setActiveCategory("all");
-                setSearchTerm("");
-                setPriceRange([minPrice, maxPrice]);
-                setDurationRange([minDuration, maxDuration]);
-                setSortBy("default");
-                setCurrentPage(1);
-              }}
-              className="w-full mt-4 px-6 py-3 rounded-lg text-sm font-semibold bg-red-500 text-white hover:bg-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {t("coursesPage.filters.reset_filters")}
-            </motion.button>
-          </motion.aside>
+              {/* Price Range Filter */}
+              <div className="filter-group">
+                <h4 className="text-md font-semibold text-[var(--color-text)] mb-4">
+                  {t("coursesPage.filters.price_range")}
+                </h4>
+                <Slider
+                  range
+                  min={minPrice}
+                  max={maxPrice}
+                  step={10000}
+                  value={priceRange}
+                  onChange={handlePriceRangeChange}
+                  trackStyle={[{ backgroundColor: "var(--color-primary)" }]}
+                  handleStyle={[
+                    {
+                      backgroundColor: "var(--color-primary)",
+                      borderColor: "var(--color-primary)",
+                      opacity: 1,
+                    },
+                    {
+                      backgroundColor: "var(--color-primary)",
+                      borderColor: "var(--color-primary)",
+                      opacity: 1,
+                    },
+                  ]}
+                  railStyle={{ backgroundColor: "var(--color-border)" }}
+                />
+                <div className="flex justify-between text-sm text-[var(--color-muted)] mt-2">
+                  <span>{formatPrice(priceRange[0])}</span>
+                  <span>{formatPrice(priceRange[1])}</span>
+                </div>
+              </div>
+
+              {/* Duration Range Filter */}
+              <div className="filter-group">
+                <h4 className="text-md font-semibold text-[var(--color-text)] mb-4">
+                  {t("coursesPage.filters.duration_range")}
+                </h4>
+                <Slider
+                  range
+                  min={minDuration}
+                  max={maxDuration}
+                  step={1}
+                  value={durationRange}
+                  onChange={handleDurationRangeChange}
+                  trackStyle={[{ backgroundColor: "var(--color-primary)" }]}
+                  handleStyle={[
+                    {
+                      backgroundColor: "var(--color-primary)",
+                      borderColor: "var(--color-primary)",
+                      opacity: 1,
+                    },
+                    {
+                      backgroundColor: "var(--color-primary)",
+                      borderColor: "var(--color-primary)",
+                      opacity: 1,
+                    },
+                  ]}
+                  railStyle={{ backgroundColor: "var(--color-border)" }}
+                />
+                <div className="flex justify-between text-sm text-[var(--color-muted)] mt-2">
+                  <span>{formatDuration(durationRange[0])}</span>
+                  <span>{formatDuration(durationRange[1])}</span>
+                </div>
+              </div>
+
+              {/* Sort By */}
+              <div className="filter-group">
+                <label
+                  htmlFor="sort-by"
+                  className="block text-md font-semibold text-[var(--color-text)] mb-2"
+                >
+                  {t("coursesPage.filters.sort_by")}
+                </label>
+                <div className="relative">
+                  <select
+                    id="sort-by"
+                    value={sortBy}
+                    onChange={handleSortChange}
+                    className="block appearance-none w-full bg-[var(--color-bg-input)] border border-[var(--color-border)] text-[var(--color-text)] py-3 px-4 pr-8 rounded-md leading-tight focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] transition-all duration-200"
+                  >
+                    <option value="default">
+                      {t("coursesPage.filters.sort_default")}
+                    </option>
+                    <option value="price_asc">
+                      {t("coursesPage.filters.sort_price_asc")}
+                    </option>
+                    <option value="price_desc">
+                      {t("coursesPage.filters.sort_price_desc")}
+                    </option>
+                    <option value="duration_asc">
+                      {t("coursesPage.filters.sort_duration_asc")}
+                    </option>
+                    <option value="duration_desc">
+                      {t("coursesPage.filters.sort_duration_desc")}
+                    </option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[var(--color-muted)]">
+                    <svg
+                      className="fill-current h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Reset Filters Button */}
+              <motion.button
+                onClick={() => {
+                  setActiveCategory("all");
+                  setSearchTerm("");
+                  setPriceRange([minPrice, maxPrice]);
+                  setDurationRange([minDuration, maxDuration]);
+                  setSortBy("default");
+                  setCurrentPage(1);
+                }}
+                className="w-full mt-4 px-6 py-3 rounded-lg text-sm font-semibold bg-red-500 text-white hover:bg-red-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {t("coursesPage.filters.reset_filters")}
+              </motion.button>
+            </motion.div>
+          </div>
 
           {/* --- Main Content Area (Courses Grid) --- */}
           <motion.div

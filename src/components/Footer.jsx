@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useContext } from "react";
 import { ThemeContext } from "../ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../assets/logo.svg"
+import logo from "../assets/logo.png"
 
 import {
   FaTelegram,

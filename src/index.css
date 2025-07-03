@@ -1,5 +1,9 @@
 @import "tailwindcss";
-
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 /* Объединенные CSS переменные для светлой темы */
 :root {
   /* Core Colors */
@@ -147,7 +151,8 @@ html.dark .body-with-grain::before {
   filter: grayscale(100%) brightness(0.5); /* Для черно-белой зернистости */
 }
 @keyframes pulse-slow {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.7;
   }
@@ -157,18 +162,14 @@ html.dark .body-with-grain::before {
   }
 }
 
- @keyframes aurora {
-    from {
-      background-position:
-        50% 50%,
-        50% 50%;
-    }
-    to {
-      background-position:
-        350% 50%,
-        350% 50%;
-    }
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
   }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
 
 .animate-pulse-slow {
   animation: pulse-slow 5s ease-in-out infinite;

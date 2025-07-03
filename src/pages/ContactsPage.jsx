@@ -1,13 +1,27 @@
 "use client";
-import React, { useContext } from "react";
-import { motion } from "framer-motion";
+import React, { useContext, useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion"; // Import AnimatePresence for smooth exit animations
 import { ThemeContext } from "../ThemeContext"; // Убедись, что путь правильный
 import { useTranslation } from "react-i18next";
+import { FaChevronDown } from "react-icons/fa"; // For the dropdown arrow icon
 
 export default function BackgroundEffect() {
   const { theme } = useContext(ThemeContext);
   const isDark = theme === "dark";
   const { t, i18n } = useTranslation();
+
+  // State для текущего выбранного филиала (индекс в массиве branches)
+  const [selectedBranchIndex, setSelectedBranchIndex] = useState(0);
+  // State для управления видимостью кастомного дропдауна
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // Ref для контейнера карты
+  const mapRef = useRef(null);
+  // Ref для кастомного дропдауна, чтобы отслеживать клики вне его
+  const dropdownRef = useRef(null);
+  // State для хранения экземпляра карты Яндекс
+  const [myMap, setMyMap] = useState(null);
+  // State для хранения меток, чтобы мы могли обращаться к ним по индексу
+  const [placemarks, setPlacemarks] = useState([]);
 
   const paths = [
     "M-380 -189C-380 -189 -312 216 152 343C616 470 684 875 684 875",
@@ -51,7 +65,7 @@ export default function BackgroundEffect() {
     "M-114 -493C-114 -493 -46 -88 418 39C882 166 950 571 950 571",
     "M-107 -501C-107 -501 -39 -96 425 31C889 158 957 563 957 563",
     "M-100 -509C-100 -509 -32 -104 432 23C896 150 964 555 964 555",
-    "M-93 -517C-93 -517 -25 -112 439 15C903 142 971 547 971 547",
+    "M-93 -517C-93 -517 -25 -112 439 15C903 142 971 -547 971 547",
     "M-86 -525C-86 -525 -18 -120 446 7C910 134 978 539 978 539",
     "M-79 -533C-79 -533 -11 -128 453 -1C917 126 985 531 985 531",
     "M-72 -541C-72 -541 -4 -136 460 -9C924 118 992 523 992 523",
@@ -70,13 +84,171 @@ export default function BackgroundEffect() {
     "M19 -645C19 -645 87 -240 551 -113C1015 14 1083 419 1083 419",
   ];
 
+  const branches = [
+    {
+      name: "IlmHub Чиланзар",
+      address: "г. Ташкент, Чиланзарский р-н, ул. Лутфи, 16Б",
+      coords: [41.285535, 69.203745], // [latitude, longitude]
+      phone: "+998 71 277-77-77",
+      workingHours: "Пн-Сб: 9:00-18:00",
+      description: "Основной филиал в Чиланзарском районе.",
+    },
+    {
+      name: "IlmHub Юнусабад",
+      address: "г. Ташкент, Юнусабадский р-н, пр-т Амира Темура, 107",
+      coords: [41.351455, 69.312214],
+      phone: "+998 71 233-33-33",
+      workingHours: "Пн-Пт: 10:00-19:00",
+      description: "Филиал для жителей Юнусабадского района.",
+    },
+    {
+      name: "IlmHub Сергели",
+      address: "г. Ташкент, Сергелийский р-н, ул. Янги Сергели, 5",
+      coords: [41.248024, 69.207567],
+      phone: "+998 71 211-11-11",
+      workingHours: "Вт-Вс: 9:00-17:00",
+      description: "Новый филиал в Сергелийском районе.",
+    },
+    {
+      name: "IlmHub Мирзо-Улугбек",
+      address: "г. Ташкент, Мирзо-Улугбекский р-н, ул. Буюк Ипак Йули, 12",
+      coords: [41.338078, 69.334083],
+      phone: "+998 71 299-99-99",
+      workingHours: "Пн-Сб: 9:30-18:30",
+      description: "Филиал недалеко от центра, удобное расположение.",
+    },
+  ];
+
   const tr = {
     title: t("contact.title", "Связаться с нами"),
     name: t("contact.name", "Имя"),
     phone: t("contact.phone", "Телефон"),
     message: t("contact.message", "Сообщение"),
     send: t("contact.send", "Отправить"),
+    openInYandexMaps: t("contact.openInYandexMaps", "Открыть в Яндекс.Картах"),
+    address: t("contact.address", "Адрес"),
+    workingHours: t("contact.workingHours", "Время работы"),
+    description: t("contact.description", "Описание"),
+    selectBranch: t("contact.selectBranch", "Выберите филиал"),
   };
+
+  // --- Yandex Maps API Integration ---
+  useEffect(() => {
+    const loadYandexMapsScript = () => {
+      if (window.ymaps) {
+        initMap();
+        return;
+      }
+
+      const script = document.createElement("script");
+      // ВАЖНО: Замените YOUR_API_KEY на ваш реальный ключ API Яндекса!
+      script.src = "https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU";
+      script.type = "text/javascript";
+      script.async = true;
+      script.onload = () => {
+        window.ymaps.ready(initMap);
+      };
+      script.onerror = (error) => {
+        console.error("Failed to load Yandex Maps script:", error);
+      };
+      document.head.appendChild(script);
+    };
+
+    const initMap = () => {
+      if (mapRef.current && window.ymaps && !myMap) {
+        const initialCoords = branches[selectedBranchIndex].coords;
+        const newMap = new window.ymaps.Map(mapRef.current, {
+          center: [initialCoords[0], initialCoords[1]], // [latitude, longitude]
+          zoom: 12,
+          controls: ['zoomControl', 'fullscreenControl', 'geolocationControl']
+        }, {
+          searchControlProvider: 'yandex#search'
+        });
+
+        const newPlacemarks = [];
+        branches.forEach((branch, index) => {
+          const balloonContent = `
+            <div style="padding: 10px; font-family: Arial, sans-serif; max-width: 300px; line-height: 1.4;">
+              <h3 style="margin-top: 0; margin-bottom: 5px; font-size: 1.2em; color: ${isDark ? '#e0e0e0' : '#333'};">${branch.name}</h3>
+              <p style="margin-bottom: 3px; color: ${isDark ? '#c0c0c0' : '#555'};"><strong>${tr.address}:</strong> ${branch.address}</p>
+              <p style="margin-bottom: 3px; color: ${isDark ? '#c0c0c0' : '#555'};"><strong>${tr.phone}:</strong> ${branch.phone}</p>
+              <p style="margin-bottom: 3px; color: ${isDark ? '#c0c0c0' : '#555'};"><strong>${tr.workingHours}:</strong> ${branch.workingHours}</p>
+              <p style="margin-bottom: 10px; font-style: italic; color: ${isDark ? '#a0a0a0' : '#777'};">${branch.description}</p>
+              <a href="https://yandex.uz/maps/?ll=${branch.coords[1]},${branch.coords[0]}&z=15&pt=${branch.coords[1]},${branch.coords[0]},pm2rdm"
+                 target="_blank" rel="noopener noreferrer"
+                 style="display: inline-block; padding: 8px 12px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9em;">
+                ${tr.openInYandexMaps}
+              </a>
+            </div>
+          `;
+
+          const placemark = new window.ymaps.Placemark(
+            [branch.coords[0], branch.coords[1]],
+            {
+              balloonContent: balloonContent,
+              hintContent: branch.name, // Подсказка при наведении
+            },
+            {
+              // Опции для метки
+            }
+          );
+          newMap.geoObjects.add(placemark);
+          newPlacemarks.push(placemark);
+
+          placemark.events.add('click', () => {
+            setSelectedBranchIndex(index);
+            // Баллун откроется автоматически при клике на метку
+          });
+        });
+
+        setMyMap(newMap);
+        setPlacemarks(newPlacemarks);
+      }
+    };
+
+    loadYandexMapsScript();
+
+    return () => {
+      if (myMap) {
+        myMap.destroy();
+        setMyMap(null);
+        setPlacemarks([]);
+      }
+    };
+  }, []);
+
+  // Эффект для обновления центра карты и открытия баллуна при изменении выбранного филиала
+  useEffect(() => {
+    if (myMap && placemarks.length > selectedBranchIndex) {
+      const selectedBranch = branches[selectedBranchIndex];
+      const selectedPlacemark = placemarks[selectedBranchIndex];
+
+      myMap.setCenter([selectedBranch.coords[0], selectedBranch.coords[1]], 15, {
+        duration: 800,
+      }).then(() => {
+        selectedPlacemark.balloon.open();
+      });
+    }
+  }, [selectedBranchIndex, myMap, placemarks, branches]);
+
+  // Обработчик выбора филиала из кастомного дропдауна
+  const handleSelectBranch = (index) => {
+    setSelectedBranchIndex(index);
+    setIsDropdownOpen(false); // Закрыть дропдаун после выбора
+  };
+
+  // Обработчик клика вне дропдауна для его закрытия
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div
@@ -149,60 +321,153 @@ export default function BackgroundEffect() {
           </defs>
         </svg>
       </div>
-      <div className="z-10 w-full max-w-lg mx-auto px-6 py-10 backdrop-blur-xl bg-white/5 dark:bg-neutral-900/10 rounded-3xl shadow-2xl border border-white/10 transition-all duration-500 ease-in-out">
-        <h2 className="text-4xl font-extrabold text-center text-white mb-8 drop-shadow-md">
-          {t("contact.title")}
-        </h2>
-        <form className="space-y-6">
-          <div className="group relative">
-            <input
-              type="text"
-              id="name"
-              className="peer w-full px-5 py-3 rounded-xl border border-white/20 bg-white/5 text-white placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg"
-            />
-            <label
-              htmlFor="name"
-              className="absolute left-5 -top-3.5 text-neutral-300 text-sm transition-all duration-300 ease-in-out peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-teal-400 bg-white/0 px-1"
+      <div className="flex flex-col lg:flex-row gap-10 justify-center items-start px-4 py-10">
+        {/* Форма */}
+        <div
+          className={`z-10 w-full lg:w-[550px] max-w-lg mx-auto px-6 py-10 rounded-3xl shadow-2xl border transition-all duration-500 ease-in-out
+          ${
+            isDark
+              ? "bg-neutral-900/80 border-white/10 text-white"
+              : "bg-white/90 border-neutral-300 text-gray-900"
+          }`}
+        >
+          <h2 className="text-4xl font-extrabold text-center mb-8 drop-shadow-md">
+            {t("contact.title")}
+          </h2>
+
+          <form className="space-y-6">
+            {["name", "phone"].map((field) => (
+              <div className="relative group" key={field}>
+                <input
+                  type={field === "phone" ? "tel" : "text"}
+                  id={field}
+                  placeholder=" "
+                  className={`peer w-full px-5 py-3 rounded-xl border
+                  ${
+                    isDark
+                      ? "bg-white/10 text-white border-white/20 placeholder:text-neutral-400"
+                      : "bg-white text-black border-gray-300 placeholder:text-gray-400"
+                  }
+                  focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-300 ease-in-out`}
+                />
+                <label
+                  htmlFor={field}
+                  className={`absolute left-5 top-3 text-sm transition-all duration-300 ease-in-out bg-transparent px-1
+                  peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
+                  peer-focus:top-0 peer-focus:text-sm peer-focus:text-teal-500
+                  ${isDark ? "text-neutral-300" : "text-gray-500"}`}
+                >
+                  {t(`contact.${field}`)}
+                </label>
+              </div>
+            ))}
+
+            <div className="relative group">
+              <textarea
+                id="message"
+                rows="4"
+                placeholder=" "
+                className={`peer w-full px-5 py-3 rounded-xl border resize-none
+                ${
+                  isDark
+                    ? "bg-white/10 text-white border-white/20 placeholder:text-neutral-400"
+                    : "bg-white text-black border-gray-300 placeholder:text-gray-400"
+                }
+                focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-300 ease-in-out`}
+              />
+              <label
+                htmlFor="message"
+                className={`absolute left-5 top-3 text-sm transition-all duration-300 ease-in-out bg-transparent px-1
+                peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
+                peer-focus:top-0 peer-focus:text-sm peer-focus:text-teal-500
+                ${isDark ? "text-neutral-300" : "text-gray-500"}`}
+              >
+                {t("contact.message")}
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-600 hover:to-indigo-700 text-white font-semibold text-lg transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-98 shadow-lg hover:shadow-xl"
             >
-              {t("contact.name")}
-            </label>
+              {t("contact.send")}
+            </button>
+          </form>
+        </div>
+
+        {/* Карта и кастомный селектор */}
+        <div className="w-full lg:w-[550px] space-y-6">
+          {/* Custom Dropdown */}
+          <div ref={dropdownRef} className="relative z-20">
+            <button
+              type="button"
+              className={`flex items-center justify-between w-full px-5 py-3 rounded-xl border cursor-pointer
+              ${
+                isDark
+                  ? "bg-neutral-800 border-white/20 text-white"
+                  : "bg-white border-gray-300 text-gray-900"
+              }
+              shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all duration-200`}
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              aria-haspopup="listbox"
+              aria-expanded={isDropdownOpen}
+            >
+              <span className="truncate">{branches[selectedBranchIndex].name}</span>
+              <FaChevronDown
+                className={`ml-2 h-4 w-4 transition-transform duration-200 ${
+                  isDropdownOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            <AnimatePresence>
+              {isDropdownOpen && (
+                <motion.ul
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className={`absolute mt-2 w-full max-h-60 overflow-auto rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
+                  ${isDark ? "bg-neutral-800 border border-white/20" : "bg-white border border-gray-300"}
+                  `}
+                  role="listbox"
+                  aria-labelledby="branch-select-button"
+                >
+                  {branches.map((branch, index) => (
+                    <li
+                      key={index}
+                      className={`cursor-pointer select-none relative py-3 pl-5 pr-9
+                      ${
+                        index === selectedBranchIndex
+                          ? isDark
+                            ? "bg-teal-700 text-white"
+                            : "bg-teal-50 text-teal-900"
+                          : isDark
+                          ? "text-white hover:bg-neutral-700"
+                          : "text-gray-900 hover:bg-gray-100"
+                      }
+                      transition-colors duration-150`}
+                      onClick={() => handleSelectBranch(index)}
+                      role="option"
+                      aria-selected={index === selectedBranchIndex}
+                    >
+                      <span className="block truncate">{branch.name}</span>
+                    </li>
+                  ))}
+                </motion.ul>
+              )}
+            </AnimatePresence>
           </div>
 
-          <div className="group relative">
-            <input
-              type="tel"
-              id="phone"
-              className="peer w-full px-5 py-3 rounded-xl border border-white/20 bg-white/5 text-white placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg"
-            />
-            <label
-              htmlFor="phone"
-              className="absolute left-5 -top-3.5 text-neutral-300 text-sm transition-all duration-300 ease-in-out peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-teal-400 bg-white/0 px-1"
-            >
-              {t("contact.phone")}
-            </label>
-          </div>
-
-          <div className="group relative">
-            <textarea
-              id="message"
-              rows="4"
-              className="peer w-full px-5 py-3 rounded-xl border border-white/20 bg-white/5 text-white placeholder:text-neutral-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 resize-none transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg"
-            ></textarea>
-            <label
-              htmlFor="message"
-              className="absolute left-5 -top-3.5 text-neutral-300 text-sm transition-all duration-300 ease-in-out peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-teal-400 bg-white/0 px-1"
-            >
-              {t("contact.message")}
-            </label>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-600 hover:to-indigo-700 text-white font-semibold text-lg transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-98 shadow-lg hover:shadow-xl"
+          {/* Это DIV, куда Яндекс.Карта будет встроена */}
+          <div
+            ref={mapRef}
+            style={{ width: "100%", height: "400px" }}
+            className="rounded-2xl overflow-hidden shadow-lg"
           >
-            {t("contact.send")}
-          </button>
-        </form>
+            {/* Карта будет загружена здесь */}
+          </div>
+        </div>
       </div>
     </div>
   );

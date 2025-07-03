@@ -161,8 +161,8 @@ const TestimonialCard = React.memo(({ testimonial }) => {
 // --- 4. Компонент RatingSummaryCard ---
 // Оборачиваем в React.memo для предотвращения лишних ререндеров
 const RatingSummaryCard = React.memo(({
-  averageRating = 4.7,
-  totalRatings = 6,
+  averageRating = 4.8,
+  totalRatings = 14,
   link = "https://yandex.uz/maps/org/196532200053/reviews/?ll=71.658637%2C41.003807&utm_campaign=v1&utm_medium=rating&utm_source=badge&z=16",
 }) => {
   const { t } = useTranslation();

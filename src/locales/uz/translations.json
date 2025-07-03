@@ -40,6 +40,9 @@
     "teachers": "O‘qituvchilar",
     "certificates": "Sertifikatlar"
   },
+   "basedOn": "Asosan",
+  "reviews": "sharhlar",
+  "readAllReviews": "Barcha sharhlarni o'qish",
   "contact": {
     "title": "Biz bilan bog'lanish",
     "name": "Ism",

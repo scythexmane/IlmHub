@@ -7,8 +7,10 @@ import { ThemeContext } from '../ThemeContext';
 import '../index.css';
 // Lucide Icons
 import { Phone, Send, Sun, Moon, Menu, X, BookOpenText, Globe } from 'lucide-react';
-import logo from "../assets/logo.svg"
-const Header = () => {
+import logo from "../assets/logo.png"
+
+// Add a new prop 'onHeaderHeightChange'
+const Header = ({ onHeaderHeightChange }) => {
   const { i18n, t } = useTranslation();
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -16,6 +18,7 @@ const Header = () => {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const location = useLocation();
   const langDropdownRef = useRef(null);
+  const headerRef = useRef(null); // Ref for the header element
 
   const languages = [
     { code: 'uz', name: 'Uzbek', flag: '🇺🇿' },
@@ -56,6 +59,27 @@ const Header = () => {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
+
+  // Effect to report header height
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current && onHeaderHeightChange) {
+        onHeaderHeightChange(headerRef.current.offsetHeight);
+      }
+    };
+
+    // Update on mount
+    updateHeaderHeight();
+
+    // Update on resize and scroll (as content might shift)
+    window.addEventListener('resize', updateHeaderHeight);
+    window.addEventListener('scroll', updateHeaderHeight); // Important for dynamic headers
+
+    return () => {
+      window.removeEventListener('resize', updateHeaderHeight);
+      window.removeEventListener('scroll', updateHeaderHeight);
+    };
+  }, [onHeaderHeightChange, isScrolled]); // Re-run if isScrolled changes (header height might change)
 
 
   const changeLanguage = (lng) => {
@@ -104,6 +128,7 @@ const Header = () => {
 
   return (
     <motion.header
+      ref={headerRef} // Attach ref here
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -129,18 +154,18 @@ const Header = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center gap-2"
+              className="inline-flex items-center gap-2 "
             >
-              <img src={logo} width={150} alt="" />
+              <img src={logo} width={50} className="rounded-2xl" alt="" />
             </motion.span>
           </Link>
 
           {/* Prominent Phone Number for Desktop */}
           <motion.a
-            href="tel:+998901234567"
+            href="tel:+998938869898"
             className="hidden md:flex items-center gap-2 text-[var(--color-text)]
-                        hover:text-[var(--color-primary)] transition-colors duration-200
-                        text-lg font-semibold px-3 py-2 rounded-lg bg-[var(--color-bg-alt)] glass-effect-sm shadow-md"
+                          hover:text-[var(--color-primary)] transition-colors duration-200
+                          text-lg font-semibold px-3 py-2 rounded-lg bg-[var(--color-bg-alt)] glass-effect-sm shadow-md"
             aria-label={t("Позвонить по номеру телефона")}
             whileHover={{ scale: 1.03, boxShadow: "0px 4px 10px rgba(0,0,0,0.15)" }}
             whileTap={{ scale: 0.97 }}
@@ -187,16 +212,16 @@ const Header = () => {
             <motion.button
               onClick={toggleLanguageDropdown}
               className={`flex items-center gap-2 px-3 py-2 rounded-full font-semibold
-                          text-[var(--color-text)] hover:bg-[var(--color-bg-alt)]
-                          transition-all duration-200 ease-in-out
-                          ${isLanguageDropdownOpen ? 'bg-[var(--color-bg-alt)]' : ''}`}
+                            text-[var(--color-text)] hover:bg-[var(--color-bg-alt)]
+                            transition-all duration-200 ease-in-out
+                            ${isLanguageDropdownOpen ? 'bg-[var(--color-bg-alt)]' : ''}`}
               aria-label={t("Переключить язык")}
               aria-expanded={isLanguageDropdownOpen}
               aria-haspopup="true"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              
+
               {languages.find(lang => lang.code === i18n.language)?.flag} {i18n.language.toUpperCase()}
             </motion.button>
 
@@ -219,9 +244,9 @@ const Header = () => {
                       key={lang.code}
                       onClick={() => changeLanguage(lang.code)}
                       className={`flex items-center gap-2 w-full px-4 py-2 text-sm text-left
-                                  text-[var(--color-text)]
-                                  transition-colors duration-150 ease-in-out rounded-lg
-                                  ${i18n.language === lang.code ? 'font-bold text-[var(--color-primary)]' : ''}`}
+                                    text-[var(--color-text)]
+                                    transition-colors duration-150 ease-in-out rounded-lg
+                                    ${i18n.language === lang.code ? 'font-bold text-[var(--color-primary)]' : ''}`}
                       role="menuitem"
                       aria-label={t(`Переключить язык на ${lang.name}`)}
                       whileHover={{ x: 5 }}
@@ -249,14 +274,14 @@ const Header = () => {
 
           <Link
             to="/contacts"
-            aria-label={t("Записаться на курс")}
+
           >
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0px 6px 12px rgba(0, 0, 0, 0.2)" }}
               whileTap={{ scale: 0.95 }}
               className={`px-6 py-3 rounded-full font-semibold btn-primary`}
             >
-              {t("Записаться на курс")}
+              {t("modal.contact_us")}
             </motion.button>
           </Link>
         </div>
@@ -296,9 +321,9 @@ const Header = () => {
             // Added h-screen to ensure it takes full viewport height
             // Added z-[999] for a very high z-index to ensure it's on top
             className={`lg:hidden fixed inset-0 bg-[var(--color-bg)]/95
-                         backdrop-blur-xl flex flex-col items-center justify-center p-8
-                         transition-colors duration-300 ease-in-out h-screen z-[999]
-                         aria-modal="true" role="dialog"`}
+                          backdrop-blur-xl flex flex-col items-center justify-center p-8
+                          transition-colors duration-300 ease-in-out h-screen z-[999]
+                          aria-modal="true" role="dialog"`}
           >
             <motion.button
               onClick={toggleMobileMenu}
@@ -339,9 +364,9 @@ const Header = () => {
             {/* Mobile Contact Info & Language Switch (within mobile menu) */}
             <div className="flex flex-col items-center gap-4 mt-8">
               {/* Phone Number in Mobile Menu */}
-              <a href="tel:+998901234567" className="flex items-center gap-2 text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-lg" aria-label={t("Позвонить по номеру телефона")}>
+              <a href="tel:+998938869898" className="flex items-center gap-2 text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-lg" aria-label={t("Позвонить по номеру телефона")}>
                 <Phone size={20} />
-                <span>+998 90 123 45 67</span>
+                <span>+998 93 886 98 98</span>
               </a>
               {/* Telegram in Mobile Menu */}
               <a
@@ -378,14 +403,13 @@ const Header = () => {
               <Link
                 to="/contacts"
                 onClick={toggleMobileMenu}
-                aria-label={t("Записаться на курс")}
               >
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={`mt-6 px-8 py-4 rounded-full text-lg font-semibold btn-primary`}
                 >
-                  {t("Записаться на курс")}
+                  {t("modal.contact_us")}
                 </motion.button>
               </Link>
             </div>

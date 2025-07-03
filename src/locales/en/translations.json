@@ -287,6 +287,9 @@
       "learnMore": "Learn More"
     }
   },
+   "basedOn": "Based on",
+  "reviews": "reviews",
+  "readAllReviews": "Read All Reviews",
   "contact": {
     "title": "Contact Us",
     "name": "Name",

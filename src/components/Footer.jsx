@@ -16,6 +16,7 @@ import {
   FaYoutube,
   FaLinkedinIn,
   FaTwitter,
+  FaTiktok,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -60,7 +61,7 @@ const Footer = () => {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="inline-flex items-center gap-2"
             >
-              <img src={logo} width={150} alt="" />
+              <img src={logo} width={70} className="rounded-3xl" alt="" />
             </motion.span>
           </Link>
           <p className="text-base text-[var(--color-muted)] mb-4">
@@ -118,19 +119,30 @@ const Footer = () => {
             <li className="flex items-center gap-2">
               <FaPhoneAlt className="text-[var(--color-primary)]" />
               <a
-                href="tel:+998901234567"
+                href="tel:+998938869898"
                 className="hover:text-[var(--color-primary)] transition-colors duration-200"
               >
-                +998 90 123 45 67
+                +998-93-886-98-98
               </a>
+    
+            </li>
+             <li className="flex items-center gap-2">
+              <FaPhoneAlt className="text-[var(--color-primary)]" />
+              <a
+                href="tel:+998916715060"
+                className="hover:text-[var(--color-primary)] transition-colors duration-200"
+              >
+                +998-91-671-50-60
+              </a>
+    
             </li>
             <li className="flex items-center gap-2">
               <FaEnvelope className="text-[var(--color-primary)]" />
               <a
-                href="mailto:info@ilmhub.uz"
+                href="mailto:ilmhub.uz@gmail.com"
                 className="hover:text-[var(--color-primary)] transition-colors duration-200"
               >
-                info@ilmhub.uz
+                ilmhub.uz@gmail.com
               </a>
             </li>
             <li className="flex items-start gap-2">
@@ -149,12 +161,12 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex gap-4 mt-4 text-lg">
             {[
-              ["https://t.me/ilmhub", FaTelegram],
-              ["https://instagram.com/ilmhub", FaInstagram],
-              ["https://facebook.com/ilmhub", FaFacebookF],
-              ["https://youtube.com/ilmhub", FaYoutube],
-              ["https://linkedin.com/company/ilmhub", FaLinkedinIn],
-              ["https://twitter.com/ilmhub", FaTwitter],
+              ["https://t.me/ilmhubuz", FaTelegram],
+              ["https://www.instagram.com/ilmhub.uz/", FaInstagram],
+              ["https://www.facebook.com/people/Ilmhub-It-School/61567629986683/?ref=_xav_ig_profile_page_web", FaFacebookF],
+              ["https://www.youtube.com/@IlmhubSchool", FaYoutube],
+              ["https://uz.linkedin.com/company/ilmhub-school", FaLinkedinIn],
+              ["https://www.tiktok.com/ilmhubuz", FaTiktok],
             ].map(([link, Icon], i) => (
               <a
                 key={i}

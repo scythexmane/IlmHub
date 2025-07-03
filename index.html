@@ -52,15 +52,16 @@
 
     <!-- 🌓 Тема -->
     <script>
-      (function () {
-        const theme =
-          localStorage.getItem("theme") ||
-          (window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light");
-        document.documentElement.classList.remove("light", "dark");
-        document.documentElement.classList.add(theme);
-      })();
+      // Это гарантирует, что класс 'dark' появится ДО загрузки Tailwind
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     </script>
   </head>
 

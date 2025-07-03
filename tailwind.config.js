@@ -2,24 +2,19 @@
 module.exports = {
   darkMode: "class",
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./public/index.html",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
   ],
   safelist: [
-    {
-      pattern: /dark:/,
-    },
-    {
-      pattern: /dark:bg-.*/,
-    },
-    {
-      pattern: /dark:text-.*/,
-    },
-    {
-      pattern: /dark:shadow-.*/,
-    },
+    "dark:bg-neutral-900",
+    "dark:text-white",
+    "dark:border-gray-700",
+    "dark:shadow-lg",
+    "dark:bg-gray-800",
+    "dark:text-gray-200",
+    "dark:bg-[var(--color-bg)]",
   ],
   theme: {
     extend: {

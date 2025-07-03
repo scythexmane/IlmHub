@@ -8,7 +8,7 @@ import {
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-// Sahifalar
+// Страницы
 import Home from "./pages/Home";
 import Courses from "./pages/CoursesPage";
 import About from "./pages/About.jsx";
@@ -23,7 +23,7 @@ const AppLayout = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 text-gray-800 dark:bg-neutral-900 dark:text-white">
+    <div className="flex flex-col min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-500 ease-in-out">
       <Header />
       <main className="flex-grow">
         <Routes>

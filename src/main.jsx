@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import "./locales/i18.js";
-import ThemeProvider from "./ThemeContext";
+import ThemeProvider from "./ThemeContext"; // путь может быть ./contexts/ThemeContext
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

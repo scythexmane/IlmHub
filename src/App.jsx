@@ -24,6 +24,11 @@ const AppLayout = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-500 ease-in-out">
+      <div className="p-6 bg-white text-black dark:bg-black dark:text-white">
+        <h1 className="text-2xl font-bold">Тест тёмной темы</h1>
+        <p>Если фон чёрный — значит `dark:` работает</p>
+      </div>
+      );
       <Header />
       <main className="flex-grow">
         <Routes>
